@@ -30,13 +30,13 @@ int main(void)
 {
     HAL_Init(); /* HAL库初始化 */
 
-    Bsp_Led_Init(); /* LED 初始化 */
-    DEBUG_USART_Config(115200);
+    Bsp_Led_Init();             /* LED 初始化 */
+    DEBUG_USART_Config(115200); // A6-TX A7-RX
     // Bsp_IIC_Init();
 
-        Usart_SendString("欢迎使用野火PY32开发板 !!!\r\n");
+    Usart_SendString("欢迎使用野火PY32开发板 !!!\r\n");
 
-        printf("test\r\n");
+    printf("test\r\n");
 
     while (1) {
         HAL_Delay(1000);
