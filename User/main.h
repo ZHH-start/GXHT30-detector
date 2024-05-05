@@ -34,6 +34,9 @@ extern "C" {
 //#include "py32f002bxx_Start_Kit.h"
 
 /* Private includes ----------------------------------------------------------*/
+#include "led/bsp_gpio_led.h"
+#include "usart/bsp_usart_debug.h"
+#include "iic/bsp_iic_oled.h"
 /* Private defines -----------------------------------------------------------*/
 /* Exported variables prototypes ---------------------------------------------*/
 /* Exported functions prototypes ---------------------------------------------*/
