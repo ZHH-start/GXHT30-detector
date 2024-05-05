@@ -392,8 +392,7 @@ static void I2C_ConvertOtherXferOptions(I2C_HandleTypeDef *hi2c);
   */
 
 /**
-  * @brief  Initializes the I2C according to the specified parameters
-  *         in the I2C_InitTypeDef and initialize the associated handle.
+  * @brief  根据I2C_InitTypeDef中指定的参数初始化 I2C，并初始化关联的句柄。
   * @param  hi2c Pointer to a I2C_HandleTypeDef structure that contains
   *                the configuration information for the specified I2C.
   * @retval HAL status

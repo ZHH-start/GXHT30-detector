@@ -31,34 +31,15 @@ int main(void)
     HAL_Init(); /* HAL库初始化 */
 
     Bsp_Led_Init(); /* LED 初始化 */
+    DEBUG_USART_Config(115200);
+    // Bsp_IIC_Init();
 
-    Bsp_IIC_Init();
+        Usart_SendString("欢迎使用野火PY32开发板 !!!\r\n");
 
-    // OLED_Init(); // 初始化OLED
+        printf("test\r\n");
 
-    // OLED_Fill(0xFF); // 全屏点亮
-
-    // unsigned char i;
     while (1) {
-        // OLED_Fill(0xFF);//全屏点亮
-        // HAL_Delay(1000);		// 1s
-
-        // OLED_Fill(0x00);//全屏灭
-        // HAL_Delay(1000);		// 1s
-
-        // for(i=0;i<4;i++)
-        // {
-        // 	OLED_ShowCN(22+i*16,0,i);									//测试显示中文
-        // }
-
-        // HAL_Delay(2000);		// 1s
-        // OLED_ShowStr(0,3,(unsigned char*)"Wildfire Tech",1);				//测试6*8字符
-        // OLED_ShowStr(0,4,(unsigned char*)"Hello wildfire",2);				//测试8*16字符
-        // HAL_Delay(1000);
-        // OLED_CLS();//清屏
-        // OLED_OFF();//测试OLED休眠
-        // HAL_Delay(1000);		// 1s
-        // OLED_ON();//测试OLED休眠后唤醒
+        HAL_Delay(1000);
     }
 }
 

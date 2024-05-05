@@ -10,6 +10,11 @@
     "files": [],
     "folders": [
       {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
+      },
+      {
         "name": "Common",
         "files": [
           {
@@ -19,11 +24,13 @@
         "folders": []
       },
       {
+        "name": "Doc",
+        "files": [],
+        "folders": []
+      },
+      {
         "name": "PY32F002B_HAL_Driver",
         "files": [
-          {
-            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal.c"
-          },
           {
             "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_adc.c"
           },
@@ -58,25 +65,28 @@
             "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_pwr.c"
           },
           {
-            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_rcc.c"
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_rcc_ex.c"
           },
           {
-            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_rcc_ex.c"
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_rcc.c"
           },
           {
             "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_spi.c"
           },
           {
-            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_tim.c"
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_tim_ex.c"
           },
           {
-            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_tim_ex.c"
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_tim.c"
           },
           {
             "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_uart.c"
           },
           {
             "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_usart.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal.c"
           }
         ],
         "folders": []
@@ -85,34 +95,27 @@
         "name": "User",
         "files": [
           {
-            "path": "User/main.c"
-          },
-          {
-            "path": "User/py32f002b_it.c"
-          },
-          {
-            "path": "User/py32f002b_hal_msp.c"
-          },
-          {
-            "path": "User/system_py32f002b.c"
+            "path": "User/iic/bsp_iic_oled.c"
           },
           {
             "path": "User/led/bsp_gpio_led.c"
           },
           {
-            "path": "User/iic/bsp_iic_oled.c"
+            "path": "User/main.c"
+          },
+          {
+            "path": "User/py32f002b_hal_msp.c"
+          },
+          {
+            "path": "User/py32f002b_it.c"
+          },
+          {
+            "path": "User/system_py32f002b.c"
+          },
+          {
+            "path": "User/usart/bsp_usart_debug.c"
           }
         ],
-        "folders": []
-      },
-      {
-        "name": "Doc",
-        "files": [],
-        "folders": []
-      },
-      {
-        "name": "::CMSIS",
-        "files": [],
         "folders": []
       }
     ]
@@ -125,7 +128,9 @@
   },
   "targets": {
     "gpio_led_key": {
-      "excludeList": [],
+      "excludeList": [
+        "<virtual_root>/User/bsp_iic_oled.c"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M0+",
@@ -240,13 +245,11 @@
         },
         "options": "null"
       },
-      "uploader": "pyOCD",
+      "uploader": "Custom",
       "uploadConfig": {
         "bin": "",
-        "targetName": "py32f002bx5",
-        "baseAddr": "0x08000000",
-        "speed": "1M",
-        "config": ".eide/gpio_led_key.pyocd.yaml"
+        "commandLine": "C:\\openocd-0.12.0\\bin\\openocd.exe -s \"C:\\openocd-0.12.0\\scripts\" -f interface/cmsis-dap.cfg -f target/py32f002b.cfg -c \"program \\\"build/gpio_led_key/Project.hex\\\" verify\" -c \"reset run\" -c \"exit\"",
+        "eraseChipCommand": ""
       },
       "uploadConfigMap": {
         "JLink": {
@@ -259,6 +262,24 @@
           "proType": 1,
           "speed": 8000,
           "otherCmds": ""
+        },
+        "pyOCD": {
+          "bin": "",
+          "targetName": "py32f002bx5",
+          "baseAddr": "0x08000000",
+          "speed": "1M",
+          "config": ".eide/gpio_led_key.pyocd.yaml"
+        },
+        "OpenOCD": {
+          "bin": "",
+          "target": "stm32f1x",
+          "interface": "stlink",
+          "baseAddr": "0x08000000"
+        },
+        "Custom": {
+          "bin": "",
+          "commandLine": "C:\\openocd-0.12.0\\bin\\openocd.exe -s \"C:\\openocd-0.12.0\\scripts\" -f interface/cmsis-dap.cfg -f target/py32f002b.cfg -c \"program \\\"build/gpio_led_key/Project.hex\\\" verify\" -c \"reset run\" -c \"exit\"",
+          "eraseChipCommand": ""
         }
       },
       "custom_dep": {
@@ -272,7 +293,8 @@
           "Doc",
           ".cmsis/include",
           "MDK-Project/RTE/_gpio_led_key",
-          ".eide/deps"
+          ".eide/deps",
+          "User/usart"
         ],
         "libList": [],
         "sourceDirList": [],

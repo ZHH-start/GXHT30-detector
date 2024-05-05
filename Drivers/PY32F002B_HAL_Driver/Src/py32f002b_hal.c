@@ -152,7 +152,7 @@ HAL_StatusTypeDef HAL_Init(void)
   /* - Prefetch disabled                                     */
   /* - Instruction cache enabled                             */
 
-  /* Use SysTick as time base source and configure 1ms tick (default clock after Reset is HSI) */
+  /* 使用 SysTick 作为时基源并配置 1ms tick (default clock after Reset is HSI) */
   if (HAL_InitTick(TICK_INT_PRIORITY) != HAL_OK)
   {
     status = HAL_ERROR;
