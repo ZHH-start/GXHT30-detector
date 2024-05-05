@@ -1,0 +1,287 @@
+{
+  "name": "Project",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [
+    ".eide/deps"
+  ],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "Common",
+        "files": [
+          {
+            "path": "Drivers/CMSIS/Device/PY32F0xx/Source/arm/startup_py32f002xx.s"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "PY32F002B_HAL_Driver",
+        "files": [
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_adc.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_comp.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_cortex.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_crc.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_exti.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_flash.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_gpio.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_i2c.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_iwdg.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_lptim.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_pwr.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_rcc.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_rcc_ex.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_spi.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_tim.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_tim_ex.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_uart.c"
+          },
+          {
+            "path": "Drivers/PY32F002B_HAL_Driver/Src/py32f002b_hal_usart.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "User",
+        "files": [
+          {
+            "path": "User/main.c"
+          },
+          {
+            "path": "User/py32f002b_it.c"
+          },
+          {
+            "path": "User/py32f002b_hal_msp.c"
+          },
+          {
+            "path": "User/system_py32f002b.c"
+          },
+          {
+            "path": "User/led/bsp_gpio_led.c"
+          },
+          {
+            "path": "User/iic/bsp_iic_oled.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Doc",
+        "files": [],
+        "folders": []
+      },
+      {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": null,
+  "packDir": null,
+  "miscInfo": {
+    "uid": "72e947519c0737a9419738b4cb5ce86c"
+  },
+  "targets": {
+    "gpio_led_key": {
+      "excludeList": [],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M0+",
+        "floatingPointHardware": "none",
+        "scatterFilePath": "MDK-Project/Objects/Project.sct",
+        "useCustomScatterFile": false,
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "RAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0xc00"
+              },
+              "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "ROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x8000000",
+                "size": "0x6000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            },
+            {
+              "tag": "IROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "pyOCD",
+      "uploadConfig": {
+        "bin": "",
+        "targetName": "py32f002bx5",
+        "baseAddr": "0x08000000",
+        "speed": "1M",
+        "config": ".eide/gpio_led_key.pyocd.yaml"
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          "User",
+          "Drivers/CMSIS/Include",
+          "Drivers/CMSIS/Device/PY32F0xx/Include",
+          "Drivers/CMSIS/Device/PY32F0xx/Source/arm",
+          "Drivers/PY32F002B_HAL_Driver/Inc",
+          "Doc",
+          ".cmsis/include",
+          "MDK-Project/RTE/_gpio_led_key",
+          ".eide/deps"
+        ],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_HAL_DRIVER",
+          "PY32F002Bx5"
+        ]
+      }
+    }
+  },
+  "version": "3.3"
+}
