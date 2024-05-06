@@ -39,7 +39,7 @@ extern "C" {
 #include "iic/bsp_iic_oled.h"
 #include "bsp_systick_delay.h"
 
-#include "sht3x.h"
+
 /* Private defines -----------------------------------------------------------*/
 /* Exported variables prototypes ---------------------------------------------*/
 /* Exported functions prototypes ---------------------------------------------*/

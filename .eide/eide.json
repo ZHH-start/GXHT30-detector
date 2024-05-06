@@ -121,16 +121,16 @@
             "name": "sht30",
             "files": [
               {
-                "path": "User/sht30/i2c_hal.c"
+                "path": "User/sht30/sensirion_common.c"
               },
               {
-                "path": "User/sht30/main.c"
+                "path": "User/sht30/sensirion_i2c_hal.c"
               },
               {
-                "path": "User/sht30/sht3x.c"
+                "path": "User/sht30/sht3x_i2c.c"
               },
               {
-                "path": "User/sht30/system.c"
+                "path": "User/sht30/sensirion_i2c.c"
               }
             ],
             "folders": []
