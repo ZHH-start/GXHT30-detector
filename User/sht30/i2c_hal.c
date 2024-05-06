@@ -13,6 +13,7 @@
 
 //-- Includes -----------------------------------------------------------------
 #include "i2c_hal.h"
+#include "bsp_usart_debug.h"
 //-- Defines ------------------------------------------------------------------
 I2C_HandleTypeDef I2cHandle;
 // I2C IO-Pins /* -- adapt the defines for your uC -- */
@@ -26,7 +27,7 @@ I2C_HandleTypeDef I2cHandle;
 // #define SCL_READ   (GPIOB->IDR & 0x2000)      // read SCL
 
 //-- Static function prototypes -----------------------------------------------
-static etError I2c_WaitWhileClockStreching(u8t timeout);
+// static etError I2c_WaitWhileClockStreching(u8t timeout);
 
 //-----------------------------------------------------------------------------
 void I2c_Init(void) /* -- adapt the init for your uC -- */
@@ -125,7 +126,7 @@ etError I2c_ReadByte(u8t *rxByte, etI2cAck ack, u8t timeout)
     // SDA_OPEN();            // release SDA-line
     // DelayMicroSeconds(20); // wait to see byte package on scope
     // return error;          // return with no error
-    return HAL_I2C_Master_Receive(&I2cHandle, SHT30_Address, &rxByte, 1, 100);
+    return HAL_I2C_Master_Receive(&I2cHandle, SHT30_Address, rxByte, 1, 100);
 }
 
 //-----------------------------------------------------------------------------
@@ -139,12 +140,12 @@ etError I2c_GeneralCallReset(void)
 }
 
 //-----------------------------------------------------------------------------
-static etError I2c_WaitWhileClockStreching(u8t timeout)
-{
-    etError error = NO_ERROR;
-    // while (SCL_READ == 0) {
-    //     if (timeout-- == 0) return TIMEOUT_ERROR;
-    //     DelayMicroSeconds(1000);
-    // }
-    return error;
-}
+// static etError I2c_WaitWhileClockStreching(u8t timeout)
+// {
+//     etError error = NO_ERROR;
+//     // while (SCL_READ == 0) {
+//     //     if (timeout-- == 0) return TIMEOUT_ERROR;
+//     //     DelayMicroSeconds(1000);
+//     // }
+//     return error;
+// }

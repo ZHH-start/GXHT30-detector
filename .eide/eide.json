@@ -121,7 +121,16 @@
             "name": "sht30",
             "files": [
               {
+                "path": "User/sht30/i2c_hal.c"
+              },
+              {
+                "path": "User/sht30/main.c"
+              },
+              {
                 "path": "User/sht30/sht3x.c"
+              },
+              {
+                "path": "User/sht30/system.c"
               }
             ],
             "folders": []
@@ -140,7 +149,8 @@
     "gpio_led_key": {
       "excludeList": [
         "<virtual_root>/User/bsp_iic_oled.c",
-        "<virtual_root>/User/sht30/sht3x.c"
+        "<virtual_root>/User/sht30/main.c",
+        "<virtual_root>/User/sht30/system.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {
