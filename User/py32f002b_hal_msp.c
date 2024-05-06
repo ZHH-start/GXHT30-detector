@@ -83,22 +83,26 @@ void HAL_UART_MspInit(UART_HandleTypeDef *UartHandle)
         DEBUG_UART_Tx_GPIO_CLK_ENABLE();
         __HAL_RCC_USART1_CLK_ENABLE();
 
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Tx_GPIO_PIN; // A6-TX
+        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Tx_GPIO_PIN; // B4-TX
         Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
         Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
         Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
         Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1;
         HAL_GPIO_Init(DEBUG_UART_Tx_GPIO_PORT, &Uart_GPIO_InitConfig);
 
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Rx_GPIO_PIN; // A7-RX
+        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Rx_GPIO_PIN; // B5-RX
         Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
         Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
         Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
         Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1;
         HAL_GPIO_Init(DEBUG_UART_Rx_GPIO_PORT, &Uart_GPIO_InitConfig);
 
-        // HAL_NVIC_SetPriority(USART1_IRQn, 0, 1); /* 抢占优先级0，子优先级1 */
-        // HAL_NVIC_EnableIRQ(USART1_IRQn);         /* 使能USART1中断通道 */
+        __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_RXNE); /*使能串口接收中断 */
+
+        __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_IDLE); /*使能串口接收中断 */
+
+        HAL_NVIC_SetPriority(USART1_IRQn, 0, 0); /* 抢占优先级0，子优先级1 */
+        HAL_NVIC_EnableIRQ(USART1_IRQn);         /* 使能USART1中断通道 */
     }
 }
 
