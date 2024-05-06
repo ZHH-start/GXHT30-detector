@@ -27,10 +27,12 @@ typedef unsigned long u32t;  ///< range: 0 .. 4'294'967'295
 typedef signed long i32t;    ///< range: -2'147'483'648 .. +2'147'483'647
 typedef float ft;            ///< range: +-1.18E-38 .. +-3.39E+38
 typedef double dt;           ///< range: .. +-1.79E+308
+
 typedef enum {
     FALSE = 0,
     TRUE  = 1
 } bt;
+
 typedef union {
     u16t u16; // element specifier for accessing whole u16
     i16t i16; // element specifier for accessing whole i16
@@ -57,4 +59,13 @@ typedef union {
 #endif
     } s32; // element spec. for acc. struct with low or high u16
 } nt32;
+
+// Error codes
+typedef enum {
+    NO_ERROR       = 0x00, // no error
+    ACK_ERROR      = 0x01, // no acknowledgment error
+    CHECKSUM_ERROR = 0x02, // checksum mismatch error
+    TIMEOUT_ERROR  = 0x04, // timeout error
+    PARM_ERROR     = 0x80, // parameter out of range error
+} etError;
 #endif

@@ -34,7 +34,7 @@
     (#) Initialize the I2C registers by calling the @ref HAL_I2C_Init(), configures also the low level Hardware
         (GPIO, CLOCK, NVIC...etc) by calling the customized @ref HAL_I2C_MspInit() API.
 
-    (#) To check if target device is ready for communication, use the function @ref HAL_I2C_IsDeviceReady()
+    (#) 检查某个目标设备是否准备好了I2C通信，可以使用该函数 @ref HAL_I2C_IsDeviceReady()
 
     (#) For I2C IO and IO MEM operations, three operation modes are available within this driver :
 
@@ -1889,7 +1889,7 @@ HAL_StatusTypeDef HAL_I2C_Slave_Receive_IT(I2C_HandleTypeDef *hi2c, uint8_t *pDa
   * @param  MemAddress Internal memory address
   * @param  MemAddSize Size of internal memory address
   * @param  pData Pointer to data buffer
-  * @param  Size Amount of data to be sent
+  * @param  Size 要发送的数据长度（字节单位）
   * @param  Timeout Timeout duration
   * @retval HAL status
   */
@@ -2470,8 +2470,8 @@ HAL_StatusTypeDef HAL_I2C_Mem_Read_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddre
   *                the configuration information for the specified I2C.
   * @param  DevAddress Target device address: The device 7 bits address value
   *         in datasheet must be shifted to the left before calling the interface
-  * @param  Trials Number of trials
-  * @param  Timeout Timeout duration
+  * @param  Trials 尝试次数
+  * @param  Timeout 超时时间
   * @retval HAL status
   */
 HAL_StatusTypeDef HAL_I2C_IsDeviceReady(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint32_t Trials, uint32_t Timeout)

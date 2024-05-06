@@ -1,22 +1,12 @@
-//=============================================================================
-// S E N S I R I O N AG, Laubisruetistr. 50, CH-8712 Staefa, Switzerland
-//=============================================================================
-// Project : SHT3x Sample Code (V1.1)
-// File : sht3x.h (V1.1)
-// Author : RFU
-// Date : 6-Mai-2015
-// Controller: STM32F100RB
-// IDE : ¦ÌVision V5.12.0.0
-// Compiler : Armcc
-// Brief : Sensor Layer: Definitions of commands and functions for sensor
-// access.
-//=============================================================================
 #ifndef SHT3X_H
 #define SHT3X_H
+
 //-- Includes -----------------------------------------------------------------
-#include "system.h"
+#include "typedefs.h"
 #include "i2c_hal.h"
+#include "py32f0xx_hal.h"
 //-- Enumerations -------------------------------------------------------------
+
 // Sensor Commands
 typedef enum {
     CMD_READ_SERIALNBR  = 0x3780, // read serial number

@@ -29,7 +29,6 @@ int main(void)
 
     Bsp_Led_Init();             /* LED 初始化 */
     DEBUG_USART_Config(115200); // UART初始化 A6-TX A7-RX
-    // Bsp_IIC_Init();//IIC初始化  PB3-SCL PB4-SDA
 
     Usart_SendString("欢迎使用野火PY32开发板 !!!\r\n");
 

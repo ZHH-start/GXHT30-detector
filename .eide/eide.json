@@ -95,9 +95,6 @@
         "name": "User",
         "files": [
           {
-            "path": "User/iic/bsp_iic_oled.c"
-          },
-          {
             "path": "User/led/bsp_gpio_led.c"
           },
           {
@@ -119,7 +116,17 @@
             "path": "User/usart/bsp_usart_debug.c"
           }
         ],
-        "folders": []
+        "folders": [
+          {
+            "name": "sht30",
+            "files": [
+              {
+                "path": "User/sht30/sht3x.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
       }
     ]
   },
@@ -132,7 +139,8 @@
   "targets": {
     "gpio_led_key": {
       "excludeList": [
-        "<virtual_root>/User/bsp_iic_oled.c"
+        "<virtual_root>/User/bsp_iic_oled.c",
+        "<virtual_root>/User/sht30/sht3x.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {
@@ -298,7 +306,8 @@
           "MDK-Project/RTE/_gpio_led_key",
           ".eide/deps",
           "User/usart",
-          "User/systick"
+          "User/systick",
+          "User/sht30"
         ],
         "libList": [],
         "sourceDirList": [],

@@ -13,6 +13,8 @@
 //-- Includes -----------------------------------------------------------------
 #include "sht3x.h"
 #include "i2c_hal.h"
+#include "bsp_usart_debug.h"
+#include "bsp_systick_delay.h"
 
 //-- Defines ------------------------------------------------------------------
 // Generator polynomial for CRC
@@ -48,23 +50,15 @@ static ft SHT3X_CalcHumidity(u16t rawValue);
 static u16t SHT3X_CalcRawTemperature(ft temperature);
 static u16t SHT3X_CalcRawHumidity(ft humidity);
 
-//-----------------------------------------------------------------------------
-void SHT3X_Init(u8t i2cAddress) /* -- adapt the init for your uC -- */
+// ³õÊ¼»¯SHT30-µØÖ·0X44
+void SHT3X_Init(u8t i2cAddress)
 {
-    // init I/O-pins
-    RCC->APB2ENR |= 0x00000008; // I/O port B clock enabled
-    // Alert on port B, bit 10
-    GPIOB->CRH &= 0xFFFFF0FF; // set floating input for Alert-Pin
-    GPIOB->CRH |= 0x00000400; //
-    // Reset on port B, bit 12
-    GPIOB->CRH &= 0xFFF0FFFF; // set push-pull output for Reset pin
-    GPIOB->CRH |= 0x00010000; //
-    RESET_LOW();
-    I2c_Init(); // init I2C
+    I2c_Init(); // PB3-I2C1_SCL PB4-I2C1_SDA
     SHT3X_SetI2cAdr(i2cAddress);
-    // release reset
-    RESET_HIGH();
+    if (HAL_I2C_IsDeviceReady(&I2cHandle, SHT30_Address, 3, 10) != HAL_OK)
+        Usart_SendString("SHT30 init error!");
 }
+
 //-----------------------------------------------------------------------------
 void SHT3X_SetI2cAdr(u8t i2cAddress)
 {
@@ -223,7 +217,7 @@ etError SHT3X_GetTempAndHumiPolling(ft *temperature, ft *humidity,
             if (error == NO_ERROR) break;
 
             // delay 1ms
-            DelayMicroSeconds(1000);
+            Delay_us(1000);
         }
 
         // if no error, read temperature and humidity raw values
@@ -239,9 +233,9 @@ etError SHT3X_GetTempAndHumiPolling(ft *temperature, ft *humidity,
             *temperature = SHT3X_CalcTemperature(rawValueTemp);
             *humidity    = SHT3X_CalcHumidity(rawValueHumi);
         }
-
-        return error;
     }
+
+    return error;
 }
 
 //-----------------------------------------------------------------------------
@@ -503,7 +497,7 @@ etError SHT3X_SoftReset(void)
     SHT3X_StopAccess();
 
     // if no error, wait 50 ms after reset
-    if (error == NO_ERROR) DelayMicroSeconds(50000);
+    if (error == NO_ERROR) Delay_us(50000);
 
     return error;
 }
@@ -515,13 +509,13 @@ void SHT3X_HardReset(void)
     RESET_LOW();
 
     // wait 100 ms
-    DelayMicroSeconds(100000);
+    Delay_us(100000);
 
     // release reset
     RESET_HIGH();
 
     // wait 50 ms after reset
-    DelayMicroSeconds(50000);
+    Delay_us(50000);
 }
 
 //-----------------------------------------------------------------------------

@@ -13,13 +13,18 @@
 #ifndef I2C_HAL_H
 #define I2C_HAL_H
 //-- Includes -----------------------------------------------------------------
-#include "system.h"
+#include "typedefs.h"
+#include "py32f0xx_hal.h"
 //-- Enumerations -------------------------------------------------------------
 // I2C acknowledge
 typedef enum {
     ACK  = 0,
     NACK = 1,
 } etI2cAck;
+
+#define SHT30_Address 0x44
+
+extern I2C_HandleTypeDef I2cHandle;
 //=============================================================================
 void I2c_Init(void);
 //=============================================================================

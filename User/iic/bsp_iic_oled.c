@@ -18,6 +18,8 @@
 #include "iic/bsp_iic_oled.h"
 #include "iic/codetab.h"
 
+I2C_HandleTypeDef I2cHandle;
+
 /**
  * @brief  LED≥ı ºªØ
  * @param  Œﬁ
@@ -26,7 +28,6 @@
  */
 void Bsp_IIC_Init(void)
 {
-    I2C_HandleTypeDef I2cHandle;
     I2cHandle.Instance             = I2C;
     I2cHandle.Mode                 = HAL_I2C_MODE_MASTER;
     I2cHandle.Init.ClockSpeed      = I2C_SPEEDCLOCK;

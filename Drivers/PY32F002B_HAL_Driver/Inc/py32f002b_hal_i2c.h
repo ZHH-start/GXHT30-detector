@@ -276,7 +276,7 @@ typedef  void (*pI2C_AddrCallbackTypeDef)(I2C_HandleTypeDef *hi2c, uint8_t Trans
   * @}
   */
 
-/** @defgroup I2C_general_call_addressing_mode I2C general call addressing mode
+/** @defgroup I2C_general_call_addressing_mode I2C general call addressing mode I2C 通用呼叫寻址模式
   * @{
   */
 #define I2C_GENERALCALL_DISABLE        0x00000000U
