@@ -37,6 +37,7 @@ extern "C" {
 #include "led/bsp_gpio_led.h"
 #include "usart/bsp_usart_debug.h"
 #include "iic/bsp_iic_oled.h"
+#include "bsp_systick_delay.h"
 /* Private defines -----------------------------------------------------------*/
 /* Exported variables prototypes ---------------------------------------------*/
 /* Exported functions prototypes ---------------------------------------------*/

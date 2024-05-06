@@ -113,6 +113,9 @@
             "path": "User/system_py32f002b.c"
           },
           {
+            "path": "User/systick/bsp_systick_delay.c"
+          },
+          {
             "path": "User/usart/bsp_usart_debug.c"
           }
         ],
@@ -294,7 +297,8 @@
           ".cmsis/include",
           "MDK-Project/RTE/_gpio_led_key",
           ".eide/deps",
-          "User/usart"
+          "User/usart",
+          "User/systick"
         ],
         "libList": [],
         "sourceDirList": [],

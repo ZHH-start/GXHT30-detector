@@ -47,6 +47,7 @@ static ft SHT3X_CalcTemperature(u16t rawValue);
 static ft SHT3X_CalcHumidity(u16t rawValue);
 static u16t SHT3X_CalcRawTemperature(ft temperature);
 static u16t SHT3X_CalcRawHumidity(ft humidity);
+
 //-----------------------------------------------------------------------------
 void SHT3X_Init(u8t i2cAddress) /* -- adapt the init for your uC -- */
 {
