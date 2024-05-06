@@ -51,8 +51,7 @@ int main(void)
     // uint16_t repetition   = 0;
 
     while (1) {
-        error = sht3x_measure_single_shot(REPEATABILITY_MEDIUM, false,
-                                          &a_temperature, &a_humidity);
+        error = sht3x_measure_single_shot(REPEATABILITY_MEDIUM, false, &a_temperature, &a_humidity);
         if (error != NO_ERROR) {
             printf("error executing measure_single_shot(): %i\n", error);
             continue;
