@@ -39,8 +39,7 @@ static etError SHT3X_StartWriteAccess(void);
 static etError SHT3X_StartReadAccess(void);
 static void SHT3X_StopAccess(void);
 static etError SHT3X_WriteCommand(etCommands command);
-static etError SHT3X_Read2BytesAndCrc(u16t *data, etI2cAck finaleAckNack,
-                                      u8t timeout);
+static etError SHT3X_Read2BytesAndCrc(u16t *data, etI2cAck finaleAckNack, u8t timeout);
 static etError SHT3X_Write2BytesAndCrc(u16t data);
 static u8t SHT3X_CalcCrc(u8t data[], u8t nbrOfBytes);
 static etError SHT3X_CheckCrc(u8t data[], u8t nbrOfBytes, u8t checksum);
