@@ -55,7 +55,7 @@ void SHT3X_Init(u8t i2cAddress)
 {
     I2c_Init(); // PB3-I2C1_SCL PB4-I2C1_SDA
     SHT3X_SetI2cAdr(i2cAddress);
-    if (HAL_I2C_IsDeviceReady(&I2cHandle, SHT30_Address, 3, 10) != HAL_OK)
+    if (HAL_I2C_IsDeviceReady(&I2cHandle, _i2cAddress << 1, 3, 10) != HAL_OK)
         Usart_SendString("SHT30 init error!");
 }
 
@@ -140,10 +140,8 @@ etError SHT3X_GetTempAndHumiClkStretch(ft *temperature, ft *humidity, etRepeatab
     error = SHT3X_StartWriteAccess();
 
     // if no error ...
-    if (error == NO_ERROR) {
-        // start measurement in clock stretching mode
-        // use depending on the required repeatability, the corresponding command
-        switch (repeatability) {
+    if (error == NO_ERROR) {     // start measurement in clock stretching mode
+        switch (repeatability) { // ????????????
             case REPEATAB_LOW:
                 error = SHT3X_WriteCommand(CMD_MEAS_CLOCKSTR_L);
                 break;
@@ -165,7 +163,7 @@ etError SHT3X_GetTempAndHumiClkStretch(ft *temperature, ft *humidity, etRepeatab
     // if no error, read humidity raw values
     if (error == NO_ERROR) error = SHT3X_Read2BytesAndCrc(&rawValueHumi, NACK, 0);
 
-    SHT3X_StopAccess();
+    // SHT3X_StopAccess();
 
     // if no error, calculate temperature in ¡ãC and humidity in %RH
     if (error == NO_ERROR) {
@@ -559,7 +557,7 @@ static etError SHT3X_StartWriteAccess(void)
     etError error; // error code
 
     // write a start condition
-    I2c_StartCondition();
+    // I2c_StartCondition();
 
     // write the sensor I2C address with the write flag
     error = I2c_WriteByte(_i2cAddress << 1);
@@ -573,7 +571,7 @@ static etError SHT3X_StartReadAccess(void)
     etError error; // error code
 
     // write a start condition
-    I2c_StartCondition();
+    // I2c_StartCondition();
 
     // write the sensor I2C address with the read flag
     error = I2c_WriteByte(_i2cAddress << 1 | 0x01);
@@ -582,7 +580,7 @@ static etError SHT3X_StartReadAccess(void)
 }
 
 //-----------------------------------------------------------------------------
-static void SHT3X_StopAccess(void)
+inline static void SHT3X_StopAccess(void)
 {
     // write a stop condition
     I2c_StopCondition();
@@ -603,8 +601,7 @@ static etError SHT3X_WriteCommand(etCommands command)
 }
 
 //-----------------------------------------------------------------------------
-static etError SHT3X_Read2BytesAndCrc(u16t *data, etI2cAck finaleAckNack,
-                                      u8t timeout)
+static etError SHT3X_Read2BytesAndCrc(u16t *data, etI2cAck finaleAckNack, u8t timeout)
 {
     etError error; // error code
     u8t bytes[2];  // read data array

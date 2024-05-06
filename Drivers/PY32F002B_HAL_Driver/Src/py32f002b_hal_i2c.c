@@ -2468,8 +2468,8 @@ HAL_StatusTypeDef HAL_I2C_Mem_Read_IT(I2C_HandleTypeDef *hi2c, uint16_t DevAddre
   * @note   This function is used with Memory devices
   * @param  hi2c Pointer to a I2C_HandleTypeDef structure that contains
   *                the configuration information for the specified I2C.
-  * @param  DevAddress Target device address: The device 7 bits address value
-  *         in datasheet must be shifted to the left before calling the interface
+  * @param  DevAddress Target device address: The device 7 bits address value in datasheet must be shifted to the left before calling the interface
+  *                     目标设备地址：设备的7bit地址传入时需要左移一位。
   * @param  Trials 尝试次数
   * @param  Timeout 超时时间
   * @retval HAL status

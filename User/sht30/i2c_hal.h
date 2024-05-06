@@ -64,4 +64,5 @@ etError I2c_WriteByte(u8t txByte);
 //=============================================================================
 etError I2c_ReadByte(u8t *rxByte, etI2cAck ack, u8t timeout);
 etError I2c_GeneralCallReset(void);
+
 #endif

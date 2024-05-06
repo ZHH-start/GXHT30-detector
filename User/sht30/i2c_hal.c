@@ -34,7 +34,7 @@ void I2c_Init(void) /* -- adapt the init for your uC -- */
 {
     I2cHandle.Instance             = I2C;
     I2cHandle.Mode                 = HAL_I2C_MODE_MASTER;
-    I2cHandle.Init.ClockSpeed      = 4000000;
+    I2cHandle.Init.ClockSpeed      = 2000000;
     I2cHandle.Init.DutyCycle       = I2C_DUTYCYCLE_16_9;
     I2cHandle.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
     I2cHandle.Init.NoStretchMode   = I2C_NOSTRETCH_DISABLE;
@@ -72,9 +72,11 @@ void I2c_StopCondition(void)
 //-----------------------------------------------------------------------------
 etError I2c_WriteByte(u8t txByte)
 {
-    // etError error = NO_ERROR;
+    etError error = NO_ERROR;
 
-        // u8t mask;
+    if (HAL_I2C_Master_Transmit(&I2cHandle, SHT30_Address << 1, &txByte, 1, 100) != HAL_OK)
+        error = TIMEOUT_ERROR;
+    // u8t mask;
     // for (mask = 0x80; mask > 0; mask >>= 1) // shift bit for masking (8 times)
     // {
     //     if ((mask & txByte) == 0)
@@ -95,13 +97,21 @@ etError I2c_WriteByte(u8t txByte)
     // DelayMicroSeconds(20); // wait to see byte package on scope
 
     // return error; // return error code
-    return HAL_I2C_Master_Transmit(&I2cHandle, SHT30_Address, &txByte, 1, 100);
+    return error;
 }
 
 //-----------------------------------------------------------------------------
 etError I2c_ReadByte(u8t *rxByte, etI2cAck ack, u8t timeout)
 {
-    // etError error = NO_ERROR;
+    etError error = NO_ERROR;
+
+    HAL_StatusTypeDef test;
+    test = HAL_I2C_Master_Receive(&I2cHandle, 0x89, rxByte, 1, 100);
+    if (test != HAL_OK) {
+        // error = TIMEOUT_ERROR;
+        printf("%d", (uint8_t)test);
+    }
+
     // u8t mask;
     // *rxByte = 0x00;
     // SDA_OPEN();                             // release SDA-line
@@ -126,7 +136,7 @@ etError I2c_ReadByte(u8t *rxByte, etI2cAck ack, u8t timeout)
     // SDA_OPEN();            // release SDA-line
     // DelayMicroSeconds(20); // wait to see byte package on scope
     // return error;          // return with no error
-    return HAL_I2C_Master_Receive(&I2cHandle, SHT30_Address, rxByte, 1, 100);
+    return error;
 }
 
 //-----------------------------------------------------------------------------
