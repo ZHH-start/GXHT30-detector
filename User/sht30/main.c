@@ -40,10 +40,12 @@ static u8t ReadUserButton(void);
 //-----------------------------------------------------------------------------
 int main(void)
 {
-    etError error;  // error code u32t	serialNumber;// serial number regStatus status;	// sensor status
-    ft temperature; // temperature [¡ãC]
-    ft humidity;    // relative humidity [%RH]
-    bt heater;      // heater, false: off, true: on
+    etError error;     // error code
+    u32t serialNumber; // serial number
+    regStatus status;  // sensor status
+    ft temperature;    // temperature [øC]
+    ft humidity;       // relative humidity [%RH]
+    bt heater;         // heater, false: off, true: on
 
     SystemInit();
     Led_Init();
@@ -77,6 +79,7 @@ int main(void)
             // read status register
             error |= SHT3X_ReadStatus(&status.u16);
             if (error != NO_ERROR) break;
+
             // check if the reset bit is set after a reset or power-up
             if (status.bit.ResetDetected) {
                 // override default temperature and humidity alert limits (red LED)
@@ -85,12 +88,15 @@ int main(void)
                                              32.0f, -2.0f,  // low clear: RH [%], T [øC]
                                              30.0f, -4.0f); // low set: RH [%], T [øC]
                 if (error != NO_ERROR) break;
+
                 // clear reset and alert flags
                 error = SHT3X_ClearAllAlertFlags();
                 if (error != NO_ERROR) break;
+
                 // start periodic measurement, with high repeatability and 1 measurements per second
                 error = SHT3X_StartPeriodicMeasurment(REPEATAB_HIGH, FREQUENCY_1HZ);
                 if (error != NO_ERROR) break;
+
                 // switch green LED on
                 LedGreenOn();
             }
@@ -99,7 +105,6 @@ int main(void)
             error = SHT3X_ReadMeasurementBuffer(&temperature, &humidity);
             if (error == NO_ERROR) {
                 // flash blue LED to signalise new temperature and humidity values
-
                 LedBlueOn();
                 DelayMicroSeconds(10000);
                 LedBlueOff();

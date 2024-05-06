@@ -41,41 +41,7 @@ void DEBUG_USART_Config(uint32_t BaudRate)
     // __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_RXNE);
 }
 
-/**
- * @brief       UART底层初始化函数
- * @param       huart: UART句柄类型指针
- * @note        此函数会被HAL_UART_Init()调用
- *              完成时钟使能，引脚配置，中断配置z
- * @retval      无
- */
-void HAL_UART_MspInit(UART_HandleTypeDef *UartHandle)
-{
-    if (UartHandle->Instance == USART1) {
-        GPIO_InitTypeDef Uart_GPIO_InitConfig;
 
-        /*USART1时钟使能*/
-        DEBUG_UART_Rx_GPIO_CLK_ENABLE();
-        DEBUG_UART_Tx_GPIO_CLK_ENABLE();
-        __HAL_RCC_USART1_CLK_ENABLE();
-
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Tx_GPIO_PIN; // A6-TX
-        Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
-        Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
-        Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
-        Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1;
-        HAL_GPIO_Init(DEBUG_UART_Tx_GPIO_PORT, &Uart_GPIO_InitConfig);
-
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Rx_GPIO_PIN; // A7-RX
-        Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
-        Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
-        Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
-        Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1;
-        HAL_GPIO_Init(DEBUG_UART_Rx_GPIO_PORT, &Uart_GPIO_InitConfig);
-
-        // HAL_NVIC_SetPriority(USART1_IRQn, 0, 1); /* 抢占优先级0，子优先级1 */
-        // HAL_NVIC_EnableIRQ(USART1_IRQn);         /* 使能USART1中断通道 */
-    }
-}
 
 /**
  * @brief  发送一个16位数函数
