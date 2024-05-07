@@ -60,8 +60,8 @@ int main(void)
             printf("error executing measure_single_shot(): %i\n", error);
             continue;
         }
-        // printf("a_temperature  [milli degC]: %i ", a_temperature);
-        // printf("a_humidity  [milli RH]: %i\n", a_humidity);
+        printf("a_temperature  [milli degC]: %i ", a_temperature);
+        printf("a_humidity  [milli RH]: %i\n", a_humidity);
         HAL_Delay(100);
     }
 }
