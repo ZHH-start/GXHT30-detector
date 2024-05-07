@@ -28,10 +28,14 @@ int main(void)
     HAL_Init(); /* HAL库初始化 */
 
     int16_t error = NO_ERROR;
-    Bsp_Led_Init();             /* LED 初始化 */
-    DEBUG_USART_Config(115200); // UART初始化 A6-TX A7-RX
+    Bsp_Led_Init();                 /* LED 初始化 */
+    DEBUG_USART_Config(115200);     // UART初始化 A6-TX A7-RX
+    Rx_Data_Buf_Init(&Rx_Data_Buf); /* USART 接收数据缓冲区初始化 */
+
     sensirion_i2c_hal_init();
     sht3x_init(SHT30_I2C_ADDR_44);
+
+    printf("init done");
 
     // sht3x_stop_measurement();
     // HAL_Delay(1);
@@ -56,8 +60,8 @@ int main(void)
             printf("error executing measure_single_shot(): %i\n", error);
             continue;
         }
-        printf("a_temperature  [milli degC]: %i ", a_temperature);
-        printf("a_humidity  [milli RH]: %i\n", a_humidity);
+        // printf("a_temperature  [milli degC]: %i ", a_temperature);
+        // printf("a_humidity  [milli RH]: %i\n", a_humidity);
         HAL_Delay(100);
     }
 }

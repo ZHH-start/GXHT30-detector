@@ -18,7 +18,8 @@
 
 #include "usart/bsp_usart_debug.h"
 
-UART_HandleTypeDef Uart1_Handle;
+UART_HandleTypeDef Uart1_Handle; /* 串口句柄声明 */
+Buffer Rx_Data_Buf;              /* 串口接收数据缓冲区 */
 
 /**
  * @brief       串口X初始化函数
@@ -41,7 +42,17 @@ void DEBUG_USART_Config(uint32_t BaudRate)
     // __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_RXNE);
 }
 
-
+/**
+ * @brief       数据接收缓冲区初始化函数
+ * @param       Rx_Data_Buf: 缓冲区
+ * @note        使用缓冲区之前必须初始化
+ * @retval      无
+ */
+void Rx_Data_Buf_Init(Buffer *Rx_Data_Buf)
+{
+    Rx_Data_Buf->Index = 0;
+    memset(Rx_Data_Buf->data, 0, Rx_Data_Buf_Size);
+}
 
 /**
  * @brief  发送一个16位数函数
