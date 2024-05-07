@@ -146,7 +146,7 @@
     "uid": "72e947519c0737a9419738b4cb5ce86c"
   },
   "targets": {
-    "gpio_led_key": {
+    "SHT30-Bluetooth": {
       "excludeList": [
         "<virtual_root>/User/bsp_iic_oled.c",
         "<virtual_root>/User/sht30/main.c",
