@@ -2102,7 +2102,7 @@ static void UART_SetConfig(UART_HandleTypeDef *huart)
 #endif /* USART_CR3_OVER8 */
 }
 /**
-  * @brief Configure the UART peripheral advanced features.
+  * @brief 配置 UART 外设高级功能。
   * @param huart UART handle.
   * @retval None
   */
@@ -2111,7 +2111,7 @@ void UART_AdvFeatureConfig(UART_HandleTypeDef *huart)
   /* Check whether the set of advanced features to configure is properly set */
   assert_param(IS_UART_ADVFEATURE_INIT(huart->AdvancedInit.AdvFeatureInit));
 
-  /* if required, configure auto Baud rate detection scheme */
+  /* 如果需要, 配置自动波特率检测方案 */
   if (HAL_IS_BIT_SET(huart->AdvancedInit.AdvFeatureInit, UART_ADVFEATURE_AUTOBAUDRATE_INIT))
   {
     assert_param(IS_USART_AUTOBAUDRATE_DETECTION_INSTANCE(huart->Instance));

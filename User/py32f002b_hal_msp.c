@@ -94,10 +94,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef *UartHandle)
         HAL_GPIO_Init(DEBUG_UART_Rx_GPIO_PORT, &Uart_GPIO_InitConfig);
 
         __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_RXNE); /*使能串口接收中断 */
+        __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_IDLE); /*使能串口接收空闲中断 */
 
-        __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_IDLE); /*使能串口接收中断 */
-
-        HAL_NVIC_SetPriority(USART1_IRQn, 0, 0); /* 抢占优先级0，子优先级1 */
+        HAL_NVIC_SetPriority(USART1_IRQn, 0, 0); /* 抢占优先级0，子优先级0 */
         HAL_NVIC_EnableIRQ(USART1_IRQn);         /* 使能USART1中断通道 */
     }
 }

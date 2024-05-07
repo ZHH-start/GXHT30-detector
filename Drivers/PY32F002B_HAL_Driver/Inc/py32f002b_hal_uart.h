@@ -387,7 +387,7 @@ typedef  void (*pUART_CallbackTypeDef)(UART_HandleTypeDef *huart);  /*!< pointer
   * @{
   */
 #define UART_ADVFEATURE_NO_INIT                 0x00000000U          /*!< No advanced feature initialization       */
-#define UART_ADVFEATURE_AUTOBAUDRATE_INIT       0x00000040U          /*!< Auto Baud rate detection initialization  */
+#define UART_ADVFEATURE_AUTOBAUDRATE_INIT       0x00000040U          /*!< 自动波特率检测初始化 */
 /**
   * @}
   */

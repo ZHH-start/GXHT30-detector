@@ -36,10 +36,8 @@ void DEBUG_USART_Config(uint32_t BaudRate)
     Uart1_Handle.Init.Parity     = UART_PARITY_NONE;
     Uart1_Handle.Init.HwFlowCtl  = UART_HWCONTROL_NONE;
     Uart1_Handle.Init.Mode       = UART_MODE_TX_RX;
-    /*使能串口 */
-    HAL_UART_Init(&Uart1_Handle);
-    /*使能串口接收中断 */
-    // __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_RXNE);
+
+    HAL_UART_Init(&Uart1_Handle); // 启动底层初始化
 }
 
 /**
