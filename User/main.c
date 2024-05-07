@@ -35,6 +35,8 @@ int main(void)
     sensirion_i2c_hal_init();
     sht3x_init(SHT30_I2C_ADDR_44);
 
+    printf("init done");
+
     // sht3x_stop_measurement();
     // HAL_Delay(1);
     // sht3x_soft_reset();

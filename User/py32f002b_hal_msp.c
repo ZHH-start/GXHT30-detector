@@ -50,13 +50,9 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
     __HAL_RCC_I2C_CLK_ENABLE();   /* I2C clock enable */
     __HAL_RCC_GPIOB_CLK_ENABLE(); /* GPIOB clock enable */
 
-    /**I2C pin configuration
-    PB3     ------> I2C1_SCL
-    PB4     ------> I2C1_SDA
-    */
-    GPIO_InitStruct.Pin       = GPIO_PIN_3 | GPIO_PIN_4;
-    GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD; /* open drain */
-    GPIO_InitStruct.Pull      = GPIO_PULLUP;     /* pull up */
+    GPIO_InitStruct.Pin       = GPIO_PIN_3 | GPIO_PIN_4; // B3-SCL B4-SDA
+    GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD;         /* open drain */
+    GPIO_InitStruct.Pull      = GPIO_PULLUP;             /* pull up */
     GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF6_I2C1; /* Reuse as I2C */
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);    /* GPIO initialization */
@@ -70,7 +66,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
  * @brief       UART底层初始化函数
  * @param       huart: UART句柄类型指针
  * @note        此函数会被HAL_UART_Init()调用
- *              完成时钟使能，引脚配置，中断配置z
+ *              完成时钟使能，引脚配置，中断配置
  * @retval      无
  */
 void HAL_UART_MspInit(UART_HandleTypeDef *UartHandle)
@@ -83,18 +79,18 @@ void HAL_UART_MspInit(UART_HandleTypeDef *UartHandle)
         DEBUG_UART_Tx_GPIO_CLK_ENABLE();
         __HAL_RCC_USART1_CLK_ENABLE();
 
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Tx_GPIO_PIN; // B4-TX
+        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Tx_GPIO_PIN; // B6-TX
         Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
         Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
         Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
-        Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1;
+        Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1; // 配置复用AF1
         HAL_GPIO_Init(DEBUG_UART_Tx_GPIO_PORT, &Uart_GPIO_InitConfig);
 
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Rx_GPIO_PIN; // B5-RX
+        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Rx_GPIO_PIN; // B7-RX
         Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
         Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
         Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
-        Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1;
+        Uart_GPIO_InitConfig.Alternate = GPIO_AF3_USART1; // 配置复用AF3
         HAL_GPIO_Init(DEBUG_UART_Rx_GPIO_PORT, &Uart_GPIO_InitConfig);
 
         __HAL_UART_ENABLE_IT(&Uart1_Handle, UART_IT_RXNE); /*使能串口接收中断 */
