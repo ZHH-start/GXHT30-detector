@@ -15,7 +15,9 @@
 #define DEBUG_UART_Tx_GPIO_PORT       GPIOA
 #define DEBUG_UART_Tx_GPIO_PIN        GPIO_PIN_6
 
-#define Rx_Data_Buf_Size              200
+#define Rx_Data_Buf_Size              50
+
+#define PRINT_SUPPORT                 // printf函数支持开关
 
 typedef struct
 {
@@ -32,4 +34,4 @@ void Rx_Data_Buf_Init(Buffer *Rx_Data_Buf);
 void DEBUG_USART_Config(uint32_t BaudRate);
 void Usart_SendString(uint8_t *str);
 
-#endif /* __BSP_USART_DEBUG_H */
+#endif
