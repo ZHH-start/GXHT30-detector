@@ -173,6 +173,8 @@ sht3x_start_periodic_measurement(repeatability measurement_repeatability,
  * reading out the data. As the minimal measurement interval is 2s and we sleep
  * for 100ms we iterate at most 200 times. Note that this is blocking the system
  * for a considerable amount of time!
+ * * 这是一种将轮询数据就绪标志和读出数据相结合的便捷方法。由于最小测量间隔为 2 秒，我们休
+ * 眠 100 毫秒，因此我们最多迭代 200 次。请注意，这会在相当长的时间内阻塞系统！
  *
  * @param[out] a_temperature Measured temperature in milli degree celsius
  * @param[out] a_humidity Measured humidity in milli percent RH
@@ -288,6 +290,7 @@ int16_t sht3x_measure_single_shot_low_repeatability_clock_stretching(
  * @brief sht3x_start_measurement_0_5_mps_high_repeatability
  *
  * Start periodic measurement mode with 0.5 mps and high repeatability.
+ * 以 0.5 mps 和高重复性启动周期测量模式。
  *
  * @return error_code 0 on success, an error code otherwise.
  */
@@ -297,6 +300,7 @@ int16_t sht3x_start_measurement_0_5_mps_high_repeatability();
  * @brief sht3x_start_measurement_0_5_mps_medium_repeatability
  *
  * Start periodic measurement mode with 0.5 mps and medium repeatability.
+ * 以 0.5 mps 和中重复性启动周期测量模式。
  *
  * @return error_code 0 on success, an error code otherwise.
  */
@@ -306,6 +310,7 @@ int16_t sht3x_start_measurement_0_5_mps_medium_repeatability();
  * @brief sht3x_start_measurement_0_5_mps_low_repeatability
  *
  * Start periodic measurement mode with 0.5 mps and low repeatability.
+ * 以 0.5 mps 和低重复性启动周期测量模式。
  *
  * @return error_code 0 on success, an error code otherwise.
  */
@@ -490,13 +495,14 @@ int16_t sht3x_disable_heater();
 /**
  * @brief ll_sht3x_read_status_register
  *
- * Read out the status register
+ * Read out the status register 读出状态寄存器
  *
  * @param[out] status_register The contents of the status register
  *
  * @note The status register contains information on the operational status of
  * the heater, the alert mode and on the execution status of the last command
  * and the last write sequence.
+ * 状态寄存器包含加热器运行状态、警报模式以及最后一个命令和最后一个写入序列的执行状态的信息。
  *
  * @return error_code 0 on success, an error code otherwise.
  */

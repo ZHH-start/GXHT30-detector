@@ -119,14 +119,19 @@ int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
             return local_error;
         }
     }
-    *a_temperature = signal_temperature(raw_temp);
-    *a_humidity    = signal_humidity(raw_humi);
+    *a_temperature = signal_temperature(raw_temp); // 读取并赋值
+    *a_humidity    = signal_humidity(raw_humi);    // 读取并赋值
     return local_error;
 }
 
-int16_t
-sht3x_start_periodic_measurement(repeatability measurement_repeatability,
-                                 mps messages_per_second)
+/**
+ * @brief 周期性测量模式
+ * @param measurement_repeatability 重复模式
+ * @param messages_per_second       间隔时间
+ * @return int16_t                  错误代码
+ */
+int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability,
+                                         mps messages_per_second)
 {
     int16_t local_error = 0;
     if (messages_per_second == MPS_EVERY_TWO_SECONDS) {
@@ -219,6 +224,7 @@ sht3x_start_periodic_measurement(repeatability measurement_repeatability,
     return local_error;
 }
 
+//阻塞测量函数
 int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
                                         int32_t *a_humidity)
 {
@@ -233,7 +239,7 @@ int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
     }
     data_ready_flag = (status >> 6) & 15;
     while (data_ready_flag == 0) {
-        sensirion_hal_sleep_us(100000);
+        sensirion_hal_sleep_us(100000);//延时一段时间
         local_error = ll_sht3x_read_status_register(&status);
         if (local_error != NO_ERROR) {
             return local_error;
