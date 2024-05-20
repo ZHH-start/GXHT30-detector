@@ -35,34 +35,27 @@ int main(void)
     sensirion_i2c_hal_init();
     sht3x_init(SHT30_I2C_ADDR_44);
 
-    printf("init done");
-
-    // sht3x_stop_measurement();
-    // HAL_Delay(1);
-    // sht3x_soft_reset();
-    // HAL_Delay(100);
-    // uint16_t a_status_register = 0u;
-
-    // error = sht3x_read_status_register(&a_status_register);
-    // if (error != NO_ERROR) {
-    //     printf("error executing read_status_register(): %i\n", error);
-    //     return error;
-    // }
-    // printf("a_status_register: %02x\n", a_status_register);
+    // printf("init done");
 
     int32_t a_temperature = 0;
     int32_t a_humidity    = 0;
     // uint16_t repetition   = 0;
 
     while (1) {
-        error = sht3x_measure_single_shot(REPEATABILITY_MEDIUM, false, &a_temperature, &a_humidity);
-        if (error != NO_ERROR) {
-            printf("error executing measure_single_shot(): %i\n", error);
-            continue;
+        // error = sht3x_measure_single_shot(REPEATABILITY_MEDIUM, false, &a_temperature, &a_humidity);
+        // if (error != NO_ERROR) {
+        //     printf("error executing measure_single_shot(): %i\n", error);
+        //     continue;
+        // }
+        // printf("a_temperature  [milli degC]: %i ", a_temperature);
+        // printf("a_humidity  [milli RH]: %i\n", a_humidity);
+
+        if (Rx_Data_Buf.Is_Reseive_Use_Done == 1) {
+            printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
+            Rx_Data_Buf.Is_Reseive_Use_Done = 0; // 标志位打开
         }
-        printf("a_temperature  [milli degC]: %i ", a_temperature);
-        printf("a_humidity  [milli RH]: %i\n", a_humidity);
-        HAL_Delay(100);
+
+        HAL_Delay(1000);
     }
 }
 

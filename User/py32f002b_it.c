@@ -76,26 +76,43 @@ void SysTick_Handler(void)
 }
 
 /******************************************************************************/
-/* PY32F002B Peripheral Interrupt Handlers                                     */
+/* PY32F002B Peripheral Interrupt Handlers                                    */
 /* Add here the Interrupt Handlers for the used peripherals.                  */
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file.                                          */
 /******************************************************************************/
 void USART1_IRQHandler(void)
 {
+    uint8_t res;
 
-    if (__HAL_UART_GET_FLAG(&Uart1_Handle, UART_FLAG_RXNE)) {                        // 接收寄存器非空
-        Rx_Data_Buf.data[Rx_Data_Buf.Index++] = READ_REG(Uart1_Handle.Instance->DR); // 读取数据
-        if (Rx_Data_Buf.Index == Rx_Data_Buf_Size) {
-            Rx_Data_Buf.Index = 0;
+    if (__HAL_UART_GET_FLAG(&Uart1_Handle, UART_FLAG_RXNE)) { // 接收寄存器非空
+
+        res = READ_REG(Uart1_Handle.Instance->DR); // 接收字符
+
+        if (Rx_Data_Buf.Is_Reseive_Use_Done == 0) {          // 处理完成才能进入接收流程
+            if (res != '\n') {                               // 换行之前
+                if (Rx_Data_Buf.Index == Rx_Data_Buf_Size) { // 如果超出长度则从头开始
+                    Rx_Data_Buf.Index = 0;
+                }
+                Rx_Data_Buf.data[Rx_Data_Buf.Index++] = res; // 读取数据
+            } else {                                         // 如果已经到了换行符，表示接收完成。
+                Rx_Data_Buf.data[Rx_Data_Buf.Index++] = res; // 最后写入一个换行
+                Rx_Data_Buf.Is_Reseive_Use_Done       = 1;   // 标志位关闭
+            }
         }
+        // else
+        //     Rx_Data_Buf.Index = 0; // 重置接收
     }
+
     /* 空闲中断 */
     if (__HAL_UART_GET_FLAG(&Uart1_Handle, UART_FLAG_IDLE)) {
         __HAL_UART_CLEAR_IDLEFLAG(&Uart1_Handle);
-        printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
-        Rx_Data_Buf.Index = 0;
-        memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size);
+        // printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
+
+        // Rx_Data_Buf.Is_Reseive_Use_Done = 0; // 标志位打开
+        Rx_Data_Buf.Index               = 0; // 清除接收
+
+        memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // 清空接收缓冲区
     }
 }
 
