@@ -67,6 +67,8 @@ void Usart_SendString(uint8_t *str)
     } while (*(str + k) != '\0');
 }
 
+#ifdef PRINT_SUPPORT 
+
 ///* 加入以下代码, 支持printf函数 */
 #if (defined(__CC_ARM)) || (defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
 /**
@@ -131,4 +133,6 @@ int _write(int file, char *ptr, int len)
     }
     return len;
 }
+#endif
+
 #endif
