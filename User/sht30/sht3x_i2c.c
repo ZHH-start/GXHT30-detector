@@ -62,6 +62,14 @@ int32_t signal_humidity(uint16_t humidity_ticks)
     return ((12500 * (int32_t)humidity_ticks) >> 13);
 }
 
+/**
+ * @brief SHT单次测量
+ * @param measurement_repeatability 重复模式（测量速度）
+ * @param is_clock_stretching       时钟拉伸模式开关
+ * @param a_temperature             传入温度值指针
+ * @param a_humidity                传入湿度值指针
+ * @return int16_t                  错误代码
+ */
 int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
                                   bool is_clock_stretching,
                                   int32_t *a_temperature, int32_t *a_humidity)

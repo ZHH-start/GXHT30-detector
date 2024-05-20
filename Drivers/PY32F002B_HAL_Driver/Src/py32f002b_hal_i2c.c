@@ -1886,8 +1886,8 @@ HAL_StatusTypeDef HAL_I2C_Slave_Receive_IT(I2C_HandleTypeDef *hi2c, uint8_t *pDa
   *                the configuration information for the specified I2C.
   * @param  DevAddress Target device address: The device 7 bits address value
   *         in datasheet must be shifted to the left before calling the interface
-  * @param  MemAddress Internal memory address
-  * @param  MemAddSize Size of internal memory address
+  * @param  MemAddress 内部寄存器地址
+  * @param  MemAddSize 内部寄存器地址大小
   * @param  pData Pointer to data buffer
   * @param  Size 要发送的数据长度（字节单位）
   * @param  Timeout Timeout duration

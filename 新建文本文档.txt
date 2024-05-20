@@ -1,0 +1,35 @@
+C:\openocd-0.12.0\bin\openocd.exe -s "C:\openocd-0.12.0\scripts" -f interface/cmsis-dap.cfg -f target/py32f002b.cfg -c "program \"build/SHT30-Bluetooth/Project.hex\" verify" -c "reset run" -c "exit"
+
+C:\openocd-0.12.0\bin\openocd.exe -s "C:\openocd-0.12.0\scripts" -f interface/cmsis-dap.cfg -f target/py32f002b.cfg -c "program ${programFile} verify" -c "reset run" -c "exit"
+
+C:\openocd-0.12.0\bin\openocd.exe -s "C:\openocd-0.12.0\scripts" -f interface/cmsis-dap.cfg -f target/py32f002b.cfg -c "program d:/Sourcetree/PY32F002B-SHT30/build/SHT30-Bluetooth/Project.hex verify" -c "reset run" -c "exit"
+
+C:\openocd-0.12.0\bin\openocd.exe -s "C:\openocd-0.12.0\scripts" -f interface/cmsis-dap.cfg -f target/py32f002b.cfg -c "program build/SHT30-Bluetooth/Project.hex verify" -c "reset run" -c "exit"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
