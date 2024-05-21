@@ -50,10 +50,12 @@ int main(void)
         // printf("a_temperature  [milli degC]: %i ", a_temperature);
         // printf("a_humidity  [milli RH]: %i\n", a_humidity);
 
-        if (Rx_Data_Buf.Is_Reseive_Use_Done == 1) {
-            printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
-            Rx_Data_Buf.Is_Reseive_Use_Done = 0; // 标志位打开
-        }
+        // if (Rx_Data_Buf.Is_Reseive_Use_Done == 1) {
+        //     printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
+        //     Rx_Data_Buf.Is_Reseive_Use_Done = 0; // 标志位打开
+        //     Rx_Data_Buf.Index               = 0; // 清除接收
+        //     memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // 清空接收缓冲区
+        // }
 
         HAL_Delay(1000);
     }
