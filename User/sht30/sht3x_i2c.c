@@ -65,7 +65,7 @@ int32_t signal_humidity(uint16_t humidity_ticks)
 /**
  * @brief SHT单次测量
  * @param measurement_repeatability 重复模式（测量速度）
- * @param is_clock_stretching       时钟拉伸模式开关
+ * @param is_clock_stretching       时钟延展模式开关
  * @param a_temperature             传入温度值指针
  * @param a_humidity                传入湿度值指针
  * @return int16_t                  错误代码

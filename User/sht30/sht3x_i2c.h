@@ -116,6 +116,7 @@ void sht3x_init(uint8_t i2c_address);
 
 /**
  * @brief Convert temperature ticks to physical value (approximation)
+ * @brief 将温度读取值转换为物理近似值
  *
  * @param[in] temperature_ticks
  *
@@ -125,6 +126,7 @@ int32_t signal_temperature(uint16_t temperature_ticks);
 
 /**
  * @brief Convert humidity ticks to physical value (approximation)
+ * @brief 将温度读取值转换为物理近似值
  *
  * @param[in] humidity_ticks
  *
@@ -134,6 +136,7 @@ int32_t signal_humidity(uint16_t humidity_ticks);
 
 /**
  * @brief Single shot measurement with the specified properties
+ * @brief 指定方式的单次测量
  *
  * @param[in] measurement_repeatability The repeatability of the periodic
  * measurement
@@ -185,7 +188,7 @@ int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
                                         int32_t *a_humidity);
 
 /**
- * @brief Read the contents of the status register
+ * @brief Read the contents of the status register 读取指定的状态寄存器
  *
  * @param[out] a_status_register
  *
@@ -437,7 +440,7 @@ int16_t sht3x_start_measurement_10_mps_low_repeatability();
 int16_t sht3x_start_art_measurement();
 
 /**
- * @brief sht3x_read_measurement
+ * @brief sht3x_read_measurement SHT30读取测量结果
  *
  * Read out data after a "start measurement" or "start art measurement" command
  * has been issued.
@@ -456,7 +459,7 @@ int16_t sht3x_read_measurement(uint16_t *temperature_ticks,
                                uint16_t *humidity_ticks);
 
 /**
- * @brief sht3x_stop_measurement
+ * @brief sht3x_stop_measurement 停止测量
  *
  * Stop the periodic measurement mode.
  *
@@ -509,7 +512,7 @@ int16_t sht3x_disable_heater();
 int16_t ll_sht3x_read_status_register(uint16_t *status_register);
 
 /**
- * @brief sht3x_clear_status_register
+ * @brief sht3x_clear_status_register SHT30清除所有寄存器标志位
  *
  * Clear (set to zero) all flags (Bit 4) in the status register.
  *
@@ -518,7 +521,7 @@ int16_t ll_sht3x_read_status_register(uint16_t *status_register);
 int16_t sht3x_clear_status_register();
 
 /**
- * @brief sht3x_soft_reset
+ * @brief sht3x_soft_reset SHT30软复位
  *
  * Perform a soft reset.
  *
