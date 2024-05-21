@@ -56,8 +56,8 @@ int main(void)
         //     Rx_Data_Buf.Index               = 0; // 清除接收
         //     memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // 清空接收缓冲区
         // }
-
-        HAL_Delay(1000);
+        command_run();
+        HAL_Delay(100);
     }
 }
 
