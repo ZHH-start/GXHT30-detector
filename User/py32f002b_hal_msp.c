@@ -79,14 +79,14 @@ void HAL_UART_MspInit(UART_HandleTypeDef *UartHandle)
         DEBUG_UART_Tx_GPIO_CLK_ENABLE();
         __HAL_RCC_USART1_CLK_ENABLE();
 
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Tx_GPIO_PIN; // B6-TX
+        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Tx_GPIO_PIN; // A6-TX
         Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
         Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
         Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
         Uart_GPIO_InitConfig.Alternate = GPIO_AF1_USART1; // ≈‰÷√∏¥”√AF1
         HAL_GPIO_Init(DEBUG_UART_Tx_GPIO_PORT, &Uart_GPIO_InitConfig);
 
-        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Rx_GPIO_PIN; // B7-RX
+        Uart_GPIO_InitConfig.Pin       = DEBUG_UART_Rx_GPIO_PIN; // A7-RX
         Uart_GPIO_InitConfig.Mode      = GPIO_MODE_AF_PP;
         Uart_GPIO_InitConfig.Pull      = GPIO_PULLUP;
         Uart_GPIO_InitConfig.Speed     = GPIO_SPEED_FREQ_HIGH;
