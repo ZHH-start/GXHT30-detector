@@ -125,7 +125,7 @@ int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
 }
 
 /**
- * @brief 周期性测量模式
+ * @brief 打开周期性测量模式
  * @param measurement_repeatability 重复模式
  * @param messages_per_second       间隔时间
  * @return int16_t                  错误代码
@@ -661,8 +661,7 @@ int16_t sht3x_start_art_measurement()
     return local_error;
 }
 
-int16_t sht3x_read_measurement(uint16_t *temperature_ticks,
-                               uint16_t *humidity_ticks)
+int16_t sht3x_read_measurement(uint16_t *temperature_ticks, uint16_t *humidity_ticks)
 {
     int16_t local_error   = NO_ERROR;
     uint8_t *buffer_ptr   = communication_buffer;

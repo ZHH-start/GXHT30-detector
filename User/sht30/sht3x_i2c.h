@@ -126,7 +126,7 @@ int32_t signal_temperature(uint16_t temperature_ticks);
 
 /**
  * @brief Convert humidity ticks to physical value (approximation)
- * @brief 将温度读取值转换为物理近似值
+ * @brief 将湿度读取值转换为物理近似值
  *
  * @param[in] humidity_ticks
  *
@@ -151,7 +151,7 @@ int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
                                   int32_t *a_temperature, int32_t *a_humidity);
 
 /**
- * @brief sht3x_start_periodic_measurement
+ * @brief sht3x_start_periodic_measurement 打开周期性测量模式
  *
  * Start the periodic measurement measurement mode.
  *
@@ -165,9 +165,8 @@ int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
  *
  * @return error_code 0 on success, an error code otherwise.
  */
-int16_t
-sht3x_start_periodic_measurement(repeatability measurement_repeatability,
-                                 mps messages_per_second);
+int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability,
+                                         mps messages_per_second);
 
 /**
  * @brief sht3x_blocking_read_measurement
@@ -184,8 +183,7 @@ sht3x_start_periodic_measurement(repeatability measurement_repeatability,
  *
  * @return error_code 0 on success, an error code otherwise.
  */
-int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
-                                        int32_t *a_humidity);
+int16_t sht3x_blocking_read_measurement(int32_t *a_temperature, int32_t *a_humidity);
 
 /**
  * @brief Read the contents of the status register 读取指定的状态寄存器
@@ -422,6 +420,7 @@ int16_t sht3x_start_measurement_10_mps_medium_repeatability();
  * @brief sht3x_start_measurement_10_mps_low_repeatability
  *
  * Start periodic measurement mode with 10 mps and low repeatability.
+ * 以10mps和低重复率启动周期测量
  *
  * @return error_code 0 on success, an error code otherwise.
  */
@@ -431,9 +430,10 @@ int16_t sht3x_start_measurement_10_mps_low_repeatability();
  * @brief sht3x_start_art_measurement
  *
  * Start ART (accelerated response time) measurement
+ * 开始 ART（加速响应时间）测量
  *
  * @note After issuing the ART command the sensor will start acquiring data with
- * a frequency of 4Hz.
+ * a frequency of 4Hz.发出 ART 命令后，传感器将以4Hz开始采集数据。
  *
  * @return error_code 0 on success, an error code otherwise.
  */
