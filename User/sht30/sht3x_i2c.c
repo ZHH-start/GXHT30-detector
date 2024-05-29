@@ -70,9 +70,7 @@ int32_t signal_humidity(uint16_t humidity_ticks)
  * @param a_humidity                传入湿度值指针
  * @return int16_t                  错误代码
  */
-int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
-                                  bool is_clock_stretching,
-                                  int32_t *a_temperature, int32_t *a_humidity)
+int16_t sht3x_measure_single_shot(repeatability measurement_repeatability, bool is_clock_stretching, int32_t *a_temperature, int32_t *a_humidity)
 {
     uint16_t raw_temp   = 0;
     uint16_t raw_humi   = 0;
@@ -107,8 +105,7 @@ int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
             return local_error;
         }
     } else if (measurement_repeatability == REPEATABILITY_MEDIUM) {
-        local_error = sht3x_measure_single_shot_medium_repeatability(&raw_temp,
-                                                                     &raw_humi);
+        local_error = sht3x_measure_single_shot_medium_repeatability(&raw_temp, &raw_humi);
         if (local_error != NO_ERROR) {
             return local_error;
         }
@@ -125,13 +122,12 @@ int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
 }
 
 /**
- * @brief 周期性测量模式
+ * @brief 周期性测量模式，该函数调用一次即可，接下来只需调用sht3x_read_measurement读取再用signal_humidity和signal_temperature转化即可。
  * @param measurement_repeatability 重复模式
  * @param messages_per_second       间隔时间
  * @return int16_t                  错误代码
  */
-int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability,
-                                         mps messages_per_second)
+int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability, mps messages_per_second)
 {
     int16_t local_error = 0;
     if (messages_per_second == MPS_EVERY_TWO_SECONDS) {
@@ -224,9 +220,8 @@ int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability
     return local_error;
 }
 
-//阻塞测量函数
-int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
-                                        int32_t *a_humidity)
+// 阻塞测量函数
+int16_t sht3x_blocking_read_measurement(int32_t *a_temperature, int32_t *a_humidity)
 {
     uint16_t status          = 0u;
     uint16_t data_ready_flag = 0u;
@@ -239,7 +234,7 @@ int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
     }
     data_ready_flag = (status >> 6) & 15;
     while (data_ready_flag == 0) {
-        sensirion_hal_sleep_us(100000);//延时一段时间
+        sensirion_hal_sleep_us(100000); // 延时一段时间
         local_error = ll_sht3x_read_status_register(&status);
         if (local_error != NO_ERROR) {
             return local_error;
@@ -291,8 +286,7 @@ int16_t sht3x_measure_single_shot_high_repeatability(uint16_t *temperature_ticks
     return local_error;
 }
 
-int16_t sht3x_measure_single_shot_high_repeatability_clock_stretching(
-    uint16_t *temperature_ticks, uint16_t *humidity_ticks)
+int16_t sht3x_measure_single_shot_high_repeatability_clock_stretching(uint16_t *temperature_ticks, uint16_t *humidity_ticks)
 {
     int16_t local_error   = NO_ERROR;
     uint8_t *buffer_ptr   = communication_buffer;
@@ -314,8 +308,7 @@ int16_t sht3x_measure_single_shot_high_repeatability_clock_stretching(
     return local_error;
 }
 
-int16_t sht3x_measure_single_shot_medium_repeatability(uint16_t *temperature_ticks,
-                                                       uint16_t *humidity_ticks)
+int16_t sht3x_measure_single_shot_medium_repeatability(uint16_t *temperature_ticks, uint16_t *humidity_ticks)
 {
     int16_t local_error   = NO_ERROR;
     uint8_t *buffer_ptr   = communication_buffer;
@@ -661,8 +654,7 @@ int16_t sht3x_start_art_measurement()
     return local_error;
 }
 
-int16_t sht3x_read_measurement(uint16_t *temperature_ticks,
-                               uint16_t *humidity_ticks)
+int16_t sht3x_read_measurement(uint16_t *temperature_ticks, uint16_t *humidity_ticks)
 {
     int16_t local_error   = NO_ERROR;
     uint8_t *buffer_ptr   = communication_buffer;
