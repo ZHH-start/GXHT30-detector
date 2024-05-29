@@ -120,16 +120,18 @@ void USART1_IRQHandler(void)
         } else if (strcmp(COMMAND_4, Rx_Data_Buf.data) == 0) {
             command = 4;
             printf("OK\r\n");
-        } else if (strcmp(COMMAND_5, Rx_Data_Buf.data) == 0) {
+        }
+        else if (strcmp(COMMAND_5, Rx_Data_Buf.data) == 0) {
             command = 5;
             printf("OK\r\n");
-        } else if (strcmp(COMMAND_6, Rx_Data_Buf.data) == 0) {
-            command = 6;
-            printf("OK\r\n");
-        } else if (strcmp(COMMAND_7, Rx_Data_Buf.data) == 0) {
-            command = 7;
-            printf("OK\r\n");
-        }
+        } 
+        // else if (strcmp(COMMAND_6, Rx_Data_Buf.data) == 0) {
+        //     command = 6;
+        //     printf("OK\r\n");
+        // } else if (strcmp(COMMAND_7, Rx_Data_Buf.data) == 0) {
+        //     command = 7;
+        //     printf("OK\r\n");
+        // }
 
         else
             printf("error\r\n");

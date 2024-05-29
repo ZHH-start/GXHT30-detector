@@ -51,7 +51,7 @@ int main(void)
         // printf("a_humidity  [milli RH]: %i\n", a_humidity);
 
         command_run();
-        HAL_Delay(100);
+        // HAL_Delay(100);
     }
 }
 

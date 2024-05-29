@@ -130,8 +130,7 @@ int16_t sht3x_measure_single_shot(repeatability measurement_repeatability,
  * @param messages_per_second       间隔时间
  * @return int16_t                  错误代码
  */
-int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability,
-                                         mps messages_per_second)
+int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability, mps messages_per_second)
 {
     int16_t local_error = 0;
     if (messages_per_second == MPS_EVERY_TWO_SECONDS) {
@@ -224,7 +223,7 @@ int16_t sht3x_start_periodic_measurement(repeatability measurement_repeatability
     return local_error;
 }
 
-//阻塞测量函数
+// 阻塞测量函数
 int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
                                         int32_t *a_humidity)
 {
@@ -239,7 +238,7 @@ int16_t sht3x_blocking_read_measurement(int32_t *a_temperature,
     }
     data_ready_flag = (status >> 6) & 15;
     while (data_ready_flag == 0) {
-        sensirion_hal_sleep_us(100000);//延时一段时间
+        sensirion_hal_sleep_us(100000); // 延时一段时间
         local_error = ll_sht3x_read_status_register(&status);
         if (local_error != NO_ERROR) {
             return local_error;
