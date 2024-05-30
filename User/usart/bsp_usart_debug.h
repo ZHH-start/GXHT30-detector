@@ -15,14 +15,15 @@
 #define DEBUG_UART_Tx_GPIO_PORT       GPIOA
 #define DEBUG_UART_Tx_GPIO_PIN        GPIO_PIN_6
 
-#define Rx_Data_Buf_Size              50
+#define Rx_Data_Buf_Size              100
 
 #define PRINT_SUPPORT                 // printf函数支持开关
 
 typedef struct
 {
-    uint16_t Index;
-    char data[Rx_Data_Buf_Size];
+    uint16_t Index;              // 数据索引
+    uint8_t Is_Reseive_Use_Done;           // 处理完成标志位
+    char data[Rx_Data_Buf_Size]; // 数据
 } Buffer;
 
 /* 全局变量声明 */

@@ -95,6 +95,9 @@
         "name": "User",
         "files": [
           {
+            "path": "User/AT_command/command_run.c"
+          },
+          {
             "path": "User/led/bsp_gpio_led.c"
           },
           {
@@ -317,7 +320,8 @@
           ".eide/deps",
           "User/usart",
           "User/systick",
-          "User/sht30"
+          "User/sht30",
+          "User/AT_command"
         ],
         "libList": [],
         "sourceDirList": [],

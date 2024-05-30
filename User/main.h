@@ -43,6 +43,8 @@ extern "C" {
 #include "sensirion_i2c_hal.h"
 #include "sht3x_i2c.h"
 
+#include "command_list.h"
+
 /* Private defines -----------------------------------------------------------*/
 /* Exported variables prototypes ---------------------------------------------*/
 /* Exported functions prototypes ---------------------------------------------*/
