@@ -28,8 +28,14 @@ int main(void)
     HAL_Init(); /* HAL库初始化 */
 
     Bsp_Led_Init();                 /* LED 初始化 */
-    DEBUG_USART_Config(9600);     // UART初始化 A6-TX A7-RX
+    DEBUG_USART_Config(9600);       // UART初始化 A6-TX A7-RX
     Rx_Data_Buf_Init(&Rx_Data_Buf); /* USART 接收数据缓冲区初始化 */
+
+    // printf("AT+NAME?");
+    // // HAL_Delay(1000);
+    // while (strcmp(COMMAND_1, Rx_Data_Buf.data) == 1)
+    // {
+    // }
 
     sensirion_i2c_hal_init();
     sht3x_init(SHT30_I2C_ADDR_44);
