@@ -3,16 +3,18 @@
 #include "sensirion_common.h"
 #include "stdio.h"
 
-uint8_t command, internal_command=0;
+uint8_t command, internal_command = 0;
 
 int32_t temperature = 0;
 int32_t humidity    = 0;
 uint16_t internal_temp;
 uint16_t internal_humi;
 
+uint16_t count = 0;
+
 void command_run()
 {
-    // int16_t error       = NO_ERROR;
+    HAL_Delay(1);
 
     switch (command) {
         case 1: {
@@ -46,22 +48,29 @@ void command_run()
     }
     switch (internal_command) {
         case 1: {
-            HAL_Delay(1000);
-            sht3x_read_measurement(&internal_temp, &internal_humi); // 读取出来
-            temperature = signal_temperature(internal_temp);        // 处理温度数据
-            humidity    = signal_humidity(internal_humi);           // 处理湿度数据
-            printf("temp:%d\r\nhumi:%d\r\n", temperature, humidity);
+            if (count >= 999) {
+                count = 0;
+                sht3x_read_measurement(&internal_temp, &internal_humi); // 读取出来
+                temperature = signal_temperature(internal_temp);        // 处理温度数据
+                humidity    = signal_humidity(internal_humi);           // 处理湿度数据
+                printf("temp:%d\r\nhumi:%d\r\n", temperature, humidity);
+            } else
+                count++;
         } break;
 
         case 2: {
-            HAL_Delay(2000);
-            sht3x_read_measurement(&internal_temp, &internal_humi); // 读取出来
-            temperature = signal_temperature(internal_temp);        // 处理温度数据
-            humidity    = signal_humidity(internal_humi);           // 处理湿度数据
-            printf("temp:%d\r\nhumi:%d\r\n", temperature, humidity);
+            if (count >= 1999) {
+                count = 0;
+                sht3x_read_measurement(&internal_temp, &internal_humi); // 读取出来
+                temperature = signal_temperature(internal_temp);        // 处理温度数据
+                humidity    = signal_humidity(internal_humi);           // 处理湿度数据
+                printf("temp:%d\r\nhumi:%d\r\n", temperature, humidity);
+            } else
+                count++;
         } break;
 
         default:
+            count++;
             break;
     }
 }

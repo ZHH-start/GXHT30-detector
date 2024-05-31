@@ -133,8 +133,6 @@ void USART1_IRQHandler(void)
         //     printf("OK\r\n");
         // }
 
-        else
-            printf("error\r\n");
 
         // printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
 
