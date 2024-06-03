@@ -70,7 +70,7 @@ void command_run()
         } break;
 
         default:
-            count++;
+            count = 0;
             break;
     }
 }
