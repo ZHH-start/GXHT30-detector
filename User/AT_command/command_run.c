@@ -20,6 +20,7 @@ void command_run()
         case 1: {
             sht3x_measure_single_shot(REPEATABILITY_MEDIUM, false, &temperature, &humidity);
             printf("temp:%d\r\nhumi:%d\r\n", temperature, humidity);
+            internal_command = 0;
             command = 0;
         } break;
         case 2: {
