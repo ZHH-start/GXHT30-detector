@@ -49,7 +49,7 @@ void command_run()
     }
     switch (internal_command) {
         case 1: {
-            if (count >= 999) {
+            if (count >= 500) {
                 count = 0;
                 sht3x_read_measurement(&internal_temp, &internal_humi); // 读取出来
                 temperature = signal_temperature(internal_temp);        // 处理温度数据
@@ -60,7 +60,7 @@ void command_run()
         } break;
 
         case 2: {
-            if (count >= 1999) {
+            if (count >= 1000) {
                 count = 0;
                 sht3x_read_measurement(&internal_temp, &internal_humi); // 读取出来
                 temperature = signal_temperature(internal_temp);        // 处理温度数据
