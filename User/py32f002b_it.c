@@ -111,13 +111,16 @@ void USART1_IRQHandler(void)
         if (strcmp(COMMAND_1, Rx_Data_Buf.data) == 0) { // 比较字符串
             command = 1;
             printf("OK\r\n");
-        } else if (strcmp(COMMAND_2, Rx_Data_Buf.data) == 0) {
-            command = 2;
-            printf("OK\r\n");
-        } else if (strcmp(COMMAND_3, Rx_Data_Buf.data) == 0) {
+        } 
+        // else if (strcmp(COMMAND_2, Rx_Data_Buf.data) == 0) {
+        //     command = 2;
+        //     printf("OK\r\n");
+        // } 
+        else if (strcmp(COMMAND_3, Rx_Data_Buf.data) == 0) {
             command = 3;
             printf("OK\r\n");
-        } else if (strcmp(COMMAND_4, Rx_Data_Buf.data) == 0) {
+        } 
+        else if (strcmp(COMMAND_4, Rx_Data_Buf.data) == 0) {
             command = 4;
             printf("OK\r\n");
         }
@@ -137,7 +140,7 @@ void USART1_IRQHandler(void)
         // printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
 
         Rx_Data_Buf.Is_Reseive_Use_Done = 0; // 空闲匹配完成，接收标志位打开
-        Rx_Data_Buf.Index               = 0; // 清除接收
+        Rx_Data_Buf.Index               = 0; // 清除长度标志
 
         memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // 清空接收缓冲区
     }

@@ -318,7 +318,8 @@
           "User/usart",
           "User/systick",
           "User/sht30",
-          "User/AT_command"
+          "User/AT_command",
+          "User/led"
         ],
         "libList": [],
         "defineList": [
