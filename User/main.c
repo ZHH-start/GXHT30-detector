@@ -1,20 +1,3 @@
-/**
- ******************************************************************************
- * @file     main.c
- * @author   embedfire
- * @version  V1.0
- * @date     2024
- * @brief    OLED测试
- ******************************************************************************
- * @attention
- *
- * 实验平台：野火 ebf_py32f002b PY32开发板
- * 论坛      ：http://www.firebbs.cn
- * 官网      ：https://embedfire.com/
- * 淘宝      ：https://yehuosm.tmall.com/
- *
- ******************************************************************************
- */
 #include "main.h"
 
 /**
@@ -36,7 +19,7 @@ int main(void)
     sensirion_i2c_hal_init();
     sht3x_init(SHT30_I2C_ADDR_44);
 
-    printf("MPT-SHT30-WIRE01 Init done\r\n");
+    printf("MPT-SHT30-WIRE01 ready\r\n");
 
     while (1) {
         command_run();

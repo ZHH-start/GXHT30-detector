@@ -4,6 +4,7 @@
 #include "stdio.h"
 
 #include "bsp_gpio_led.h"
+#include "bsp_usart_debug.h"
 
 uint8_t command, internal_command = 0;
 
@@ -57,6 +58,19 @@ void command_run()
             internal_command = 0;
             command          = 0;
         } break;
+
+        case 6: {
+            DEBUG_USART_Config(9600);       // UART初始化 A6-TX A7-RX
+            internal_command = 0;
+            command          = 0;
+        } break;
+
+        case 7: {
+            DEBUG_USART_Config(115200);       // UART初始化 A6-TX A7-RX
+            internal_command = 0;
+            command          = 0;
+        } break;
+
 
         default:
             break;
