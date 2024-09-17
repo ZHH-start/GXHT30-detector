@@ -115,6 +115,9 @@
           },
           {
             "path": "User/usart/bsp_usart_debug.c"
+          },
+          {
+            "path": "User/Task.c"
           }
         ],
         "folders": [
@@ -132,6 +135,27 @@
               },
               {
                 "path": "User/sht30/sensirion_i2c.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "app",
+            "files": [
+              {
+                "path": "User/APP/app.c"
+              },
+              {
+                "path": "User/APP/app_led.c"
+              },
+              {
+                "path": "User/APP/app_read.c"
+              },
+              {
+                "path": "User/APP/app_send.c"
+              },
+              {
+                "path": "User/APP/app_uart_receive.c"
               }
             ],
             "folders": []
@@ -319,7 +343,8 @@
           "User/systick",
           "User/sht30",
           "User/AT_command",
-          "User/led"
+          "User/led",
+          "User/APP"
         ],
         "libList": [],
         "defineList": [
@@ -337,7 +362,7 @@
             "use-microLIB": true
           },
           "c/cpp-compiler": {
-            "optimization": "level-0",
+            "optimization": "level-1",
             "one-elf-section-per-function": true,
             "c99-mode": true,
             "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
