@@ -489,7 +489,7 @@ int16_t sht3x_enable_heater();
 /**
  * @brief sht3x_disable_heater
  *
- * Disable the heater
+ * 禁用加热器
  *
  * @return error_code 0 on success, an error code otherwise.
  */
