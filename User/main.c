@@ -10,7 +10,9 @@ int main(void)
 {
     HAL_Init(); /* HAL库初始化 */
 
-    Bsp_Led_Init();                 /* LED 初始化 */
+    sys_init();
+
+    // Bsp_Led_Init();                 /* LED 初始化 */
     // DEBUG_USART_Config(115200);       // UART初始化 A6-TX A7-RX
     // Rx_Data_Buf_Init(&Rx_Data_Buf); /* USART 接收数据缓冲区初始化 */
 
@@ -23,7 +25,7 @@ int main(void)
 
     while (1) {
         // command_run();
-        
+        Task_Pro_Handler_Callback();
     }
 }
 

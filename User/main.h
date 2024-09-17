@@ -31,10 +31,12 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "py32f0xx_hal.h"
+#include "Task.h"
+#include "app.h"
 //#include "py32f002bxx_Start_Kit.h"
 
 /* Private includes ----------------------------------------------------------*/
-#include "led/bsp_gpio_led.h"
+
 #include "usart/bsp_usart_debug.h"
 #include "iic/bsp_iic_oled.h"
 #include "bsp_systick_delay.h"

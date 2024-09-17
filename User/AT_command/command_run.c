@@ -3,7 +3,7 @@
 #include "sensirion_common.h"
 #include "stdio.h"
 
-#include "bsp_gpio_led.h"
+// #include "bsp_gpio_led.h"
 #include "bsp_usart_debug.h"
 
 uint8_t command, internal_command = 0;

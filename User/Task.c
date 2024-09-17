@@ -11,7 +11,7 @@
 /*---------------------------------------------------------------------*/
 
 #include	"Task.h"
-// #include	"app.h"
+#include	"app.h"
 
 //========================================================================
 //                               本地变量声明
@@ -20,7 +20,7 @@
 static TASK_COMPONENTS Task_Comps[]=
 {
 //状态  计数  周期  函数
-	// {0, 250, 250, Sample_Lamp},				/* task 1 Period： 250ms */
+	{0, 250, 250, app_led_toggle},				/* task 1 Period： 250ms */
 	// {0, 500, 500, Sample_ADtoUART},		/* task 2 Period： 500ms */
 //	{0, 20, 20, Sample_INTtoUART},		/* task 3 Period： 20ms */
 //	{0, 1, 1, Sample_RTC},						/* task 4 Period： 1ms */
