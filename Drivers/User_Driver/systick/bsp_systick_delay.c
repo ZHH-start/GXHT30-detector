@@ -15,7 +15,7 @@
  *
  ******************************************************************************
  */
-#include "systick/bsp_systick_delay.h"
+#include "bsp_systick_delay.h"
 
 /* usясй╠╫зед */
 static uint8_t fac_us = HSI_VALUE / 1000000;

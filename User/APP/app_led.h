@@ -2,6 +2,7 @@
 #define __APP_LED_H
 
 #include "main.h"
+#include "app.h"
 
 #define PWM_GPIO_CLK_ENABLE __HAL_RCC_GPIOA_CLK_ENABLE
 #define PWM_GPIO_PORT       GPIOA

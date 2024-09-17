@@ -16,7 +16,7 @@
  ******************************************************************************
  */
 
-#include "usart/bsp_usart_debug.h"
+#include "bsp_usart_debug.h"
 
 UART_HandleTypeDef Uart1_Handle; /* 串口句柄声明 */
 Buffer Rx_Data_Buf;              /* 串口接收数据缓冲区 */

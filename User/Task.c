@@ -20,8 +20,8 @@
 static TASK_COMPONENTS Task_Comps[]=
 {
 //状态  计数  周期  函数
-	{0, 250, 250, app_led_toggle},				/* task 1 Period： 250ms */
-	// {0, 500, 500, Sample_ADtoUART},		/* task 2 Period： 500ms */
+	{0, 1, 250, app_led_toggle},				/* task 1 Period： 250ms */
+	{0, 250, 1000, app_sht_read},		/* task 2 Period： 500ms */
 //	{0, 20, 20, Sample_INTtoUART},		/* task 3 Period： 20ms */
 //	{0, 1, 1, Sample_RTC},						/* task 4 Period： 1ms */
 //	{0, 1, 1, Sample_I2C_PS},					/* task 5 Period： 1ms */

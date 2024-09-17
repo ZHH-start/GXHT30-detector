@@ -26,8 +26,8 @@
 #include "Task.h"
 
 /* Private includes ----------------------------------------------------------*/
-#include "usart/bsp_usart_debug.h"
-#include "command_list.h"
+#include "bsp_usart_debug.h"
+// #include "command_list.h"
 #include "string.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/

@@ -111,12 +111,6 @@
             "path": "User/system_py32f002b.c"
           },
           {
-            "path": "User/systick/bsp_systick_delay.c"
-          },
-          {
-            "path": "User/usart/bsp_usart_debug.c"
-          },
-          {
             "path": "User/Task.c"
           }
         ],
@@ -149,13 +143,58 @@
                 "path": "User/APP/app_led.c"
               },
               {
-                "path": "User/APP/app_read.c"
-              },
-              {
                 "path": "User/APP/app_send.c"
               },
               {
                 "path": "User/APP/app_uart_receive.c"
+              },
+              {
+                "path": "User/APP/app_sht_read.c"
+              },
+              {
+                "path": "User/APP/sys_init.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      },
+      {
+        "name": "User_Driver",
+        "files": [],
+        "folders": [
+          {
+            "name": "sht30",
+            "files": [
+              {
+                "path": "Drivers/User_Driver/sht30/sensirion_common.c"
+              },
+              {
+                "path": "Drivers/User_Driver/sht30/sensirion_i2c.c"
+              },
+              {
+                "path": "Drivers/User_Driver/sht30/sensirion_i2c_hal.c"
+              },
+              {
+                "path": "Drivers/User_Driver/sht30/sht3x_i2c.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "systick",
+            "files": [
+              {
+                "path": "Drivers/User_Driver/systick/bsp_systick_delay.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "usart",
+            "files": [
+              {
+                "path": "Drivers/User_Driver/usart/bsp_usart_debug.c"
               }
             ],
             "folders": []
@@ -341,12 +380,11 @@
           "Doc",
           ".cmsis/include",
           "MDK-Project/RTE/_gpio_led_key",
-          "User/usart",
-          "User/systick",
-          "User/sht30",
-          "User/AT_command",
           "User/led",
-          "User/APP"
+          "User/APP",
+          "Drivers/User_Driver/sht30",
+          "Drivers/User_Driver/systick",
+          "Drivers/User_Driver/usart"
         ],
         "libList": [],
         "defineList": [
