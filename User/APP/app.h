@@ -7,6 +7,7 @@
 
 #include "app_led.h"
 #include "app_sht_read.h"
+#include "app_uart_control.h"
 
 //========================================================================
 //                               本地函数和变量声明
@@ -15,7 +16,13 @@ void sys_init();
 //========================================================================
 //                            外部函数和变量声明
 //========================================================================
-extern int32_t temperature;
-extern int32_t humidity;
+extern int32_t temperature; // 温度
+extern int32_t humidity;    // 湿度
+
+extern uint32_t uart_control; // 串口波特率控制
+
+#define COMMAND_27 "CM+BAUD=9600\r\n"
+#define COMMAND_28 "CM+BAUD=115200\r\n"
+#define COMMAND_30 "CM+BAUD=921600\r\n"
 
 #endif

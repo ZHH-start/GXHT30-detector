@@ -1,5 +1,5 @@
-#ifndef __BSP_USART_DEBUG_H
-#define __BSP_USART_DEBUG_H
+#ifndef __BSP_USART_H
+#define __BSP_USART_H
 
 /* 包含其他头文件 */
 #include "py32f0xx_hal.h"

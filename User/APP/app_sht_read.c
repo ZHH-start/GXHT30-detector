@@ -28,5 +28,5 @@ void app_sht_read_init()
 void app_sht_read()
 {
     sht3x_measure_single_shot(REPEATABILITY_MEDIUM, false, &temperature, &humidity);
-    printf("temp:%d\r\nhumi:%d\r\n", temperature, humidity);
+    // printf("temp:%d\r\nhumi:%d\r\n", temperature, humidity);
 }

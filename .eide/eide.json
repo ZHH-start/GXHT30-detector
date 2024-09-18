@@ -96,9 +96,6 @@
             "path": "User/AT_command/command_run.c"
           },
           {
-            "path": "User/led/bsp_gpio_led.c"
-          },
-          {
             "path": "User/main.c"
           },
           {
@@ -146,13 +143,13 @@
                 "path": "User/APP/app_send.c"
               },
               {
-                "path": "User/APP/app_uart_receive.c"
-              },
-              {
                 "path": "User/APP/app_sht_read.c"
               },
               {
                 "path": "User/APP/sys_init.c"
+              },
+              {
+                "path": "User/APP/app_uart_control.c"
               }
             ],
             "folders": []
@@ -194,7 +191,7 @@
             "name": "usart",
             "files": [
               {
-                "path": "Drivers/User_Driver/usart/bsp_usart_debug.c"
+                "path": "Drivers/User_Driver/usart/bsp_usart.c"
               }
             ],
             "folders": []
