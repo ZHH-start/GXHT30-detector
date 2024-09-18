@@ -10,7 +10,7 @@ static TASK_COMPONENTS Task_Comps[] = {
     // 状态  启动时间  周期  函数
     {0, 1, 250, app_led_toggle}, /* task 1 Period： 250ms */
     {0, 1, 10, app_sht_read},   /* task 2 Period： 500ms */
-    {0, 1, 500, app_uart_control},
+    {0, 1, 10, app_uart_control},
 
 };
 

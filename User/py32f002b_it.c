@@ -111,11 +111,9 @@ void USART1_IRQHandler(void)
 
         if (strcmp(COMMAND_27, Rx_Data_Buf.data) == 0) {
             printf("OK\r\n");
-            // printf("choose uart baud 9600\r\n");
             uart_control = 2;
         } else if (strcmp(COMMAND_28, Rx_Data_Buf.data) == 0) {
             printf("OK\r\n");
-            // printf("choose uart baud 115200\r\n");
             uart_control = 1;
         }
 
@@ -145,10 +143,10 @@ void USART1_IRQHandler(void)
 
         //     // printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
 
-        //     Rx_Data_Buf.Is_Reseive_Use_Done = 0; // 空闲匹配完成，接收标志位打开
-        //     Rx_Data_Buf.Index               = 0; // 清除长度标志
+            Rx_Data_Buf.Is_Reseive_Use_Done = 0; // 空闲匹配完成，接收标志位打开
+            Rx_Data_Buf.Index               = 0; // 清除长度标志
 
-        //     memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // 清空接收缓冲区
+            memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // 清空接收缓冲区
 
         __HAL_UART_CLEAR_IDLEFLAG(&Uart1_Handle);
     }

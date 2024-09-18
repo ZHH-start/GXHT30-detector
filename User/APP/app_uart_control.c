@@ -12,15 +12,10 @@ void app_uart_control_init(void)
 
 void app_uart_control(void)
 {
-    printf("uart_control:%d", uart_control);
     if (uart_control == UART_LOW_BAUD) {
-        printf("choose uart baud 9600\r\n");
         DEBUG_USART_Config(9600);
         uart_control = UART_CONTROL_OFF;
-    } 
-    
-    else if (uart_control == UART_HIGH_BAUD) {
-        printf("choose uart baud 115200\r\n");
+    } else if (uart_control == UART_HIGH_BAUD) {
         DEBUG_USART_Config(115200);
         uart_control = UART_CONTROL_OFF;
     }
