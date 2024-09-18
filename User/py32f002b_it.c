@@ -109,15 +109,18 @@ void USART1_IRQHandler(void)
     // /* ¿ÕÏÐÖÐ¶Ï */
     if (__HAL_UART_GET_FLAG(&Uart1_Handle, UART_FLAG_IDLE)) {
 
-        if (strcmp(COMMAND_27, Rx_Data_Buf.data) == 0) { // ±È½Ï×Ö·û´®
-            uart_control = UART_LOW_BAUD;
+        if (strcmp(COMMAND_27, Rx_Data_Buf.data) == 0) {
             printf("OK\r\n");
+            // printf("choose uart baud 9600\r\n");
+            uart_control = 2;
         } else if (strcmp(COMMAND_28, Rx_Data_Buf.data) == 0) {
-            uart_control = UART_MEDIUM_BAUD;
             printf("OK\r\n");
-        } else if (strcmp(COMMAND_30, Rx_Data_Buf.data) == 0) {
-            uart_control = UART_HIGH_BAUD;
-            printf("OK\r\n");
+            // printf("choose uart baud 115200\r\n");
+            uart_control = 1;
+        }
+
+        else {
+            printf("ERROR\r\n");
         }
         //     else if (strcmp(COMMAND_4, Rx_Data_Buf.data) == 0) {
         //         command = 4;

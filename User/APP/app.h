@@ -19,10 +19,9 @@ void sys_init();
 extern int32_t temperature; // 温度
 extern int32_t humidity;    // 湿度
 
-extern uint32_t uart_control; // 串口波特率控制
+extern __IO int uart_control; // 串口波特率控制
 
 #define COMMAND_27 "CM+BAUD=9600\r\n"
 #define COMMAND_28 "CM+BAUD=115200\r\n"
-#define COMMAND_30 "CM+BAUD=921600\r\n"
 
 #endif

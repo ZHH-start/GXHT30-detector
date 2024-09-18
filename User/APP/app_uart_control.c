@@ -1,26 +1,27 @@
 #include "app_uart_control.h"
 #include "bsp_usart.h"
+#include "stdio.h"
 
-uint32_t uart_control = UART_CONTROL_OFF;
+__IO int uart_control = UART_CONTROL_OFF;
 
 void app_uart_control_init(void)
 {
     DEBUG_USART_Config(115200);
+    Rx_Data_Buf_Init(&Rx_Data_Buf); // USART 接收数据缓冲区初始化
 }
 
 void app_uart_control(void)
 {
-    // printf("choose uart baud\r\n");
+    printf("uart_control:%d", uart_control);
     if (uart_control == UART_LOW_BAUD) {
+        printf("choose uart baud 9600\r\n");
         DEBUG_USART_Config(9600);
         uart_control = UART_CONTROL_OFF;
-    }
-    if (uart_control == UART_MEDIUM_BAUD) {
-        DEBUG_USART_Config(115299);
-        uart_control = UART_CONTROL_OFF;
-    }
-    if (uart_control == UART_HIGH_BAUD) {
-        DEBUG_USART_Config(921600);
+    } 
+    
+    else if (uart_control == UART_HIGH_BAUD) {
+        printf("choose uart baud 115200\r\n");
+        DEBUG_USART_Config(115200);
         uart_control = UART_CONTROL_OFF;
     }
 }
