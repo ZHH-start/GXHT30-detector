@@ -12,6 +12,16 @@ static TASK_COMPONENTS Task_Comps[] = {
     {0, 1, 10, app_sht_read},   /* task 2 Period£º 500ms */
     {0, 1, 10, app_uart_control},
 
+    {0, 10, 10, app_humi_send_once},
+    {0, 10, 10000, app_humi_send_low_speed},
+    {0, 10, 1000, app_humi_send_medium_speed},
+    {0, 10, 100, app_humi_send_high_speed},
+
+    {0, 10, 10, app_temp_send_once},
+    {0, 10, 10000, app_temp_send_low_speed},
+    {0, 10, 1000, app_temp_send_medium_speed},
+    {0, 10, 100, app_temp_send_high_speed},
+
 };
 
 uint8_t Tasks_Max = sizeof(Task_Comps) / sizeof(Task_Comps[0]);

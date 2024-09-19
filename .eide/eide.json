@@ -140,9 +140,6 @@
                 "path": "User/APP/app_led.c"
               },
               {
-                "path": "User/APP/app_send.c"
-              },
-              {
                 "path": "User/APP/app_sht_read.c"
               },
               {
@@ -150,6 +147,9 @@
               },
               {
                 "path": "User/APP/app_uart_control.c"
+              },
+              {
+                "path": "User/APP/app_sht_send.c"
               }
             ],
             "folders": []

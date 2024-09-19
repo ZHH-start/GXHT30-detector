@@ -2,7 +2,7 @@
 #include "bsp_usart.h"
 #include "stdio.h"
 
-__IO int uart_control = UART_CONTROL_OFF;
+int uart_control = UART_CONTROL_OFF;
 
 void app_uart_control_init(void)
 {

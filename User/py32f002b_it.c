@@ -109,12 +109,67 @@ void USART1_IRQHandler(void)
     // /* ¿ÕÏÐÖÐ¶Ï */
     if (__HAL_UART_GET_FLAG(&Uart1_Handle, UART_FLAG_IDLE)) {
 
-        if (strcmp(COMMAND_27, Rx_Data_Buf.data) == 0) {
+        // ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª´®¿Ú²¨ÌØÂÊ
+        if (strcmp(COMMAND_UART_LOW, Rx_Data_Buf.data) == 0) {
             printf("OK\r\n");
-            uart_control = 2;
-        } else if (strcmp(COMMAND_28, Rx_Data_Buf.data) == 0) {
+            uart_control = UART_LOW_BAUD;
+        }
+
+        else if (strcmp(COMMAND_UART_HIGH, Rx_Data_Buf.data) == 0) {
             printf("OK\r\n");
-            uart_control = 1;
+            uart_control = UART_HIGH_BAUD;
+        }
+
+        // ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÎÂ¶È·¢ËÍ
+        else if (strcmp(COMMAND_SEND_TEMP_ONCE, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            temp_send_speed = TEMP_SEND_ONCE;
+        }
+
+        else if (strcmp(COMMAND_SEND_TEMP_LOWSPEED, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            temp_send_speed = TEMP_SEND_LOW_SPEED;
+        }
+
+        else if (strcmp(COMMAND_SEND_TEMP_MEDIUMSPEED, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            temp_send_speed = TEMP_SEND_MEDIUM_SPEED;
+        }
+
+        else if (strcmp(COMMAND_SEND_TEMP_HIGHSPEED, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            temp_send_speed = TEMP_SEND_HIGH_SPEED;
+        }
+
+        else if (strcmp(COMMAND_SEND_TEMP_OFF, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            temp_send_speed = TEMP_SEND_OFF;
+        }
+
+        // ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªÊª¶È·¢ËÍ
+        else if (strcmp(COMMAND_SEND_HUMI_ONCE, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            humi_send_speed = HUMI_SEND_ONCE;
+        }
+
+        else if (strcmp(COMMAND_SEND_HUMI_LOWSPEED, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            humi_send_speed = HUMI_SEND_LOW_SPEED;
+        }
+
+        else if (strcmp(COMMAND_SEND_HUMI_MEDIUMSPEED, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            humi_send_speed = HUMI_SEND_MEDIUM_SPEED;
+        }
+
+        else if (strcmp(COMMAND_SEND_HUMI_HIGHSPEED, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            humi_send_speed = HUMI_SEND_HIGH_SPEED;
+        }
+
+        else if (strcmp(COMMAND_SEND_HUMI_OFF, Rx_Data_Buf.data) == 0) {
+            printf("OK\r\n");
+            humi_send_speed = HUMI_SEND_OFF;
         }
 
         else {
@@ -143,10 +198,10 @@ void USART1_IRQHandler(void)
 
         //     // printf("Index:%d\r\nRx_Data:%s\r\n", Rx_Data_Buf.Index, Rx_Data_Buf.data);
 
-            Rx_Data_Buf.Is_Reseive_Use_Done = 0; // ¿ÕÏÐÆ¥ÅäÍê³É£¬½ÓÊÕ±êÖ¾Î»´ò¿ª
-            Rx_Data_Buf.Index               = 0; // Çå³ý³¤¶È±êÖ¾
+        Rx_Data_Buf.Is_Reseive_Use_Done = 0; // ¿ÕÏÐÆ¥ÅäÍê³É£¬½ÓÊÕ±êÖ¾Î»´ò¿ª
+        Rx_Data_Buf.Index               = 0; // Çå³ý³¤¶È±êÖ¾
 
-            memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // Çå¿Õ½ÓÊÕ»º³åÇø
+        memset(Rx_Data_Buf.data, 0, Rx_Data_Buf_Size); // Çå¿Õ½ÓÊÕ»º³åÇø
 
         __HAL_UART_CLEAR_IDLEFLAG(&Uart1_Handle);
     }
