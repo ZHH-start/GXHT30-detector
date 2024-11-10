@@ -93,9 +93,6 @@
         "name": "User",
         "files": [
           {
-            "path": "User/AT_command/command_run.c"
-          },
-          {
             "path": "User/main.c"
           },
           {
